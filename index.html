@@ -17,7 +17,10 @@
             overflow-x: hidden; 
         }
         .bg-menu-bar { background-color: #3B0000; }
-        .bg-hero { background-color: #3B0000; }
+        
+        /* Fundo Sólido Padrão para seções sem imagem */
+        .bg-solid-dark { background-color: #3B0000; }
+        
         .text-date, .text-orange-custom { color: #d95d38; }
         .text-speaker-name { color: #CF3826; }
         
@@ -226,6 +229,14 @@
         .accordion-content.open {
             opacity: 1;
         }
+
+        /* FUNDO DA PRIMEIRA SESSÃO (HERO) */
+        .bg-hero-image {
+            background-image: url('https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp');
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -253,28 +264,36 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="bg-hero min-h-screen w-full flex flex-col items-center justify-center pt-24 pb-12 px-4">
-        <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-            <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada Sul-Americana de Pilates" class="w-auto h-40 md:h-56 object-contain"></div>
-            <div class="mb-2"><p class="text-date text-xl md:text-2xl font-bold tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
-            <div class="mb-10"><p class="text-white text-lg md:text-xl font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
-            <div class="mb-16"><a href="#" class="btn-hero shadow-xl">QUERO PARTICIPAR!</a></div>
+    <!-- PARTE 1: HERO + FEATURES (COM IMAGEM DE FUNDO) -->
+    <div class="bg-hero-image w-full">
+        <header class="flex flex-col items-center justify-center pt-24 pb-12 px-4">
+            <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
+                <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada Sul-Americana de Pilates" class="w-auto h-40 md:h-56 object-contain"></div>
+                <div class="mb-2"><p class="text-date text-xl md:text-2xl font-bold tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
+                <div class="mb-10"><p class="text-white text-lg md:text-xl font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
+                <div class="mb-16"><a href="#" class="btn-hero shadow-xl">QUERO PARTICIPAR!</a></div>
 
-            <h2 class="text-orange-custom text-2xl md:text-3xl font-normal mb-8">O que esperar da X Jornada?</h2>
+                <h2 class="text-orange-custom text-2xl md:text-3xl font-normal mb-8">O que esperar da X Jornada?</h2>
 
-            <!-- Grid Features -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-24">
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Workshops de<br>qualidade</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Contato direto com<br>17 palestrantes</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Networking com<br>todo o Brasil</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Jornada<br>Business</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Material<br>Didático</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Temas<br>Variados</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Festa à<br>Fantasia</p></div>
-                <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">600<br>Congressistas</p></div>
+                <!-- Grid Features -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-12">
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Workshops de<br>qualidade</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Contato direto com<br>17 palestrantes</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Networking com<br>todo o Brasil</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Jornada<br>Business</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Material<br>Didático</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Temas<br>Variados</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">Festa à<br>Fantasia</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" class="w-12 h-12 icon-white object-contain"><p class="text-white text-sm">600<br>Congressistas</p></div>
+                </div>
             </div>
+        </header>
+    </div>
 
+    <!-- PARTE 2: PALESTRANTES, NOVIDADES, VÍDEO (FUNDO SÓLIDO) -->
+    <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-12 pb-12 px-4">
+        <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
+            
             <!-- Carrossel Palestrantes -->
             <div class="w-full mb-12">
                 <h2 class="text-white text-2xl md:text-4xl font-light mb-12">Palestrantes confirmados <span class="text-orange-custom font-bold">2026:</span></h2>
@@ -313,7 +332,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- SEÇÃO PRÉ-JORNADA -->
     <section class="w-full flex items-end pt-12 md:pt-20 pb-0" style="background-color: #C01B1C;">
@@ -340,8 +359,7 @@
             </div>
 
             <!-- SEXTA-FEIRA -->
-            <!-- Removido qualquer shadow-2xl ou shadow-xl das div das tabelas conforme pedido -->
-            <div class="w-full mb-12">
+            <div class="w-full shadow-2xl mb-12">
                 <div class="schedule-header">SEXTA-FEIRA (22/05/2026)</div>
                 <table class="schedule-table">
                     <tr><td class="time-cell">9h00<br>-<br>12h00</td><td class="session-cell"><div class="flex flex-col md:flex-row items-center justify-between"><div><span class="font-bold">PRÉ-JORNADA:</span> Imersão de 3h com Mariana Dias e Marcella Contursi sobre Planejamento de Aula, Comando Verbal e Sequências Reformer (adquirido a parte por R$147)</div><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-table-buy md:ml-4">COMPRAR AGORA</a></div></td></tr>
@@ -369,7 +387,7 @@
             </div>
 
             <!-- SÁBADO -->
-            <div class="w-full mb-12">
+            <div class="w-full shadow-2xl mb-12">
                 <div class="schedule-header">SÁBADO (23/05/2026)</div>
                 <table class="schedule-table">
                     <tr><td class="time-cell">8h00<br>-<br>10h00</td><td class="content-cell"><div class="simultaneous-grid">
@@ -414,7 +432,7 @@
             </div>
 
             <!-- DOMINGO -->
-            <div class="w-full mb-12">
+            <div class="w-full shadow-2xl mb-12">
                 <div class="schedule-header">DOMINGO (24/05/2026)</div>
                 <table class="schedule-table">
                     <tr><td class="time-cell">9h00<br>-<br>11h00</td><td class="content-cell"><div class="simultaneous-grid">
@@ -718,8 +736,8 @@
             data.forEach((item, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
-                if(type==='speaker') slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center"><img src="${item.image}" class="w-full md:w-1/3 rounded-lg object-cover"><div class="w-full md:w-2/3 text-left"><h3 class="text-speaker-name font-bold text-2xl uppercase">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed">${item.text}</p></div></div>`;
-                else slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4 py-2">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}"></div></div>`;
+                if(type==='speaker') slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center"><img src="${item.image}" alt="${item.name}" class="w-full md:w-1/3 rounded-lg object-cover"><div class="w-full md:w-2/3 text-left"><h3 class="text-speaker-name font-bold text-2xl uppercase">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed">${item.text}</p></div></div>`;
+                else slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4 py-2">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}"></div></div>`;
                 track.appendChild(slide);
                 const dot = document.createElement('div');
                 dot.className = `dot ${index === 0 ? 'active' : ''}`;
