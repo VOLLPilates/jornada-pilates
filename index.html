@@ -29,6 +29,7 @@
             text-transform: uppercase;
             white-space: nowrap;
             border: none !important;
+            /* PADRONIZAÇÃO DE TAMANHO */
             padding: 0px 15px !important;
             height: 32px !important;
             line-height: 32px !important; 
@@ -56,14 +57,19 @@
             background-color: #EB662B !important; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
+        
+        /* Hover específico para botão flutuante (mantém centralização) */
+        .payment-btn-float:hover {
+            background-color: #e5a030 !important;
+            transform: translateX(-50%) scale(1.05) !important;
+        }
 
         /* CARDS */
         .feature-card {
             border: 1px solid #d95d38; border-radius: 20px; height: 100%; min-height: 170px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px 10px; transition: background-color 0.3s;
+            text-align: center; padding: 20px 10px; 
         }
-        .feature-card:hover { background-color: rgba(255, 255, 255, 0.05); }
         .icon-white { filter: brightness(0) invert(1); }
 
         /* CARROSSEL GERAL */
@@ -86,24 +92,17 @@
         
         /* CONFIGURAÇÃO DE SETAS NO MOBILE (PALESTRANTES) */
         @media (max-width: 767px) {
-            /* Garante que as setas aparecem */
             .nav-button { display: flex !important; }
-            
-            /* Ajuste específico para o carrossel de palestrantes (que não é o de news) */
             .carousel-wrapper:not(.news-carousel-wrapper) .nav-button {
-                /* Alinhamento com o centro da imagem: Padding 20px + Metade da imagem (112px) = 132px */
-                top: 132px !important; 
+                /* Ajustado para alinhar com o centro da imagem (considerando altura variável agora, fixamos aprox) */
+                top: 35% !important; 
                 transform: translateY(-50%);
-                
-                /* Estilo melhorado */
                 width: 48px;
                 height: 48px;
                 background-color: rgba(255, 255, 255, 0.95);
                 box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-                color: #CF3826; /* Vermelho para destaque */
+                color: #CF3826; 
             }
-            
-            /* Garante espaço lateral */
             .nav-prev { left: 5px; }
             .nav-next { right: 5px; }
         }
@@ -136,7 +135,6 @@
             }
             .news-carousel-wrapper .carousel-viewport { overflow: visible !important; }
             .news-carousel-wrapper .carousel-slide { padding: 0; margin-bottom: 0; }
-            /* Esconde setas no carrossel de novidades (lista vertical) */
             .news-carousel-wrapper .nav-button, .news-carousel-wrapper .carousel-dots { display: none !important; }
         }
 
@@ -558,7 +556,7 @@
             <h2 class="text-orange-custom text-3xl md:text-4xl font-normal mb-12 text-center">Dúvidas</h2>
             <div class="space-y-4" id="accordion-container">
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
+                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">O QUE ESTÁ INCLUSO PELO VALOR PAGO?</span></button><div class="accordion-content text-white font-light text-base"><ul class="list-disc list-inside space-y-1 ml-2 pt-2"><li>5 Workshops;</li><li>Entrada na palestra de abertura;</li><li>Acesso online ao material de todos os palestrantes;</li><li>Kit do congressista com sacochila, bloco e caneta;</li><li>Camiseta;</li><li>Certificado de participação VOLL;</li><li>1 entrada na Jornada Business;</li><li>1 workshop extra.</li></ul></div></div>
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMO EU REALIZO O PAGAMENTO DA MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode se inscrever diretamente nos botões do Menu Superior em <span class="text-[#FCB541] font-bold">AMARELO</span> do nosso site ou entrando em contato com uma de nossas consultoras pelo WhatsApp <a href="https://wa.me/5519993043657" class="text-[#FCB541] font-bold hover:underline">(19) 99304-3657</a>.</p></div></div>
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">TEM ESTACIONAMENTO NO LOCAL?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Sim, o hotel conta com estacionamento. Os valores podem variar de acordo com a época do ano.</p></div></div>
@@ -639,7 +637,8 @@
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 if(type==='speaker') {
-                    slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center"><img src="${item.image}" alt="${item.name}" class="w-56 h-56 md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-2xl uppercase">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
+                    // CORREÇÃO AQUI: Alterado 'h-56' para 'h-auto' na imagem para não ficar quadrada
+                    slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center"><img src="${item.image}" alt="${item.name}" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-2xl uppercase">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
                 } else if (type === 'news') {
                     slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" style="pointer-events: none;"></div></div>`; 
                 }
