@@ -16,20 +16,20 @@
             background-color: #3B0000; 
             overflow-x: hidden; 
         }
-        .bg-menu-bar { background-color: #3B0000; }
+
+        .bg-menu-bar { background-color: #2F0602; }
         .bg-hero { background-color: #3B0000; }
         .text-date, .text-orange-custom { color: #d95d38; }
         .text-speaker-name { color: #CF3826; }
         
-        /* BOTÕES */
+        /* BOTÕES PADRONIZADOS */
         .bg-ticket-btn, .btn-hero, .btn-table-buy, .payment-btn-float {
             background-color: #FCB541 !important;
             color: #340A02 !important;
-            font-weight: 700 !important;
+            font-weight: 500 !important;
             text-transform: uppercase;
             white-space: nowrap;
             border: none !important;
-            /* PADRONIZAÇÃO DE TAMANHO */
             padding: 0px 15px !important;
             height: 32px !important;
             line-height: 32px !important; 
@@ -47,6 +47,85 @@
             transform: scale(1.05);
         }
 
+        /* --- CORREÇÃO DE VISIBILIDADE DO BOTÃO --- */
+        /* Esta regra força a ocultação no desktop, sobrepondo o !important do display: inline-flex */
+        @media (min-width: 768px) {
+            .md\:hidden {
+                display: none !important;
+            }
+        }
+
+        /* --- BOTÃO GRANDE (HERO) --- */
+        .btn-hero-lg {
+            background-color: #fcb62f !important;
+            color: #340a02 !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 500 !important;
+            text-transform: uppercase;
+            border-radius: 50px !important;
+            border-width: 0px !important;
+            font-size: 20px !important;
+            padding: 5px 15px !important;
+            line-height: normal !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .btn-hero-lg:hover {
+            transform: scale(1.05);
+            background-color: #e5a030 !important;
+        }
+
+        /* --- BOTÃO DO MENU --- */
+        .bg-ticket-btn {
+            background-color: #fcb62f !important;
+            color: #340a02 !important;
+            font-weight: 500 !important;
+            text-transform: uppercase;
+            border-width: 0px !important;
+            border-radius: 50px !important;
+            padding: 5px 20px !important; 
+            height: auto !important; 
+            line-height: normal !important;
+            font-size: 14px !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .bg-ticket-btn:hover {
+            background-color: #e5a030 !important;
+            transform: scale(1.05);
+        }
+
+        /* --- CLASSE UNIFICADA (CTA) --- */
+        .btn-global-cta {
+            background-color: #FCB541 !important;
+            color: #340A02 !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 500 !important;
+            text-transform: uppercase;
+            border-radius: 50px !important;
+            border: none !important;
+            padding: 5px 20px !important;
+            height: auto !important;
+            line-height: normal !important;
+            font-size: 20px !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-global-cta:hover {
+            background-color: #e5a030 !important;
+            transform: scale(1.05);
+        }
+
         .btn-custom-padding { padding: 0px 15px; line-height: 26px; display: inline-block; }
         
         .payment-btn-float {
@@ -56,13 +135,33 @@
             transform: translateX(-50%);
             background-color: #EB662B !important; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-weight: 500 !important;
         }
         
-        /* Hover específico para botão flutuante (mantém centralização) */
         .payment-btn-float:hover {
             background-color: #e5a030 !important;
-            transform: translateX(-50%) scale(1.05) !important;
+            transform: translateX(-50%) scale(1.05) !important; 
         }
+        
+        /* Botão da Tabela */
+        .btn-table-buy {
+            background-color: #FCB541 !important;
+            color: #340A02 !important;
+            font-weight: 500 !important; 
+            text-transform: uppercase; 
+            font-size: 12px;
+            white-space: nowrap;
+            border: none !important;
+            padding: 0px 15px; 
+            height: 32px; 
+            line-height: 32px;
+            border-radius: 4px; 
+            display: inline-block; 
+            margin-top: 10px; 
+            transition: transform 0.2s; 
+            cursor: pointer;
+        }
+        .btn-table-buy:hover { transform: scale(1.05); opacity: 0.9; }
 
         /* CARDS */
         .feature-card {
@@ -90,11 +189,15 @@
         .nav-prev { left: 0; } .nav-next { right: 0; }
         @media (min-width: 1100px) { .nav-prev { left: -25px; } .nav-next { right: -25px; } }
         
-        /* CONFIGURAÇÃO DE SETAS NO MOBILE (PALESTRANTES) */
+        /* ESCONDER SETAS NO MOBILE (GLOBAL) */
         @media (max-width: 767px) {
-            .nav-button { display: flex !important; }
+            .nav-button { display: none !important; }
+        }
+        
+        /* EXCEÇÃO: MOSTRAR SETAS NO CARROSSEL DE PALESTRANTES (MOBILE) */
+        @media (max-width: 767px) {
             .carousel-wrapper:not(.news-carousel-wrapper) .nav-button {
-                /* Ajustado para alinhar com o centro da imagem (considerando altura variável agora, fixamos aprox) */
+                display: flex !important;
                 top: 35% !important; 
                 transform: translateY(-50%);
                 width: 48px;
@@ -111,28 +214,17 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.3); cursor: pointer; }
         .dot.active { background-color: white; }
 
-        /* --- ESTILO CRÍTICO: NOVIDADES COMO CARDS (MOBILE/TABLET) --- */
+        /* NOVIDADES CARDS (MOBILE) */
         .news-card-container { 
-            display: flex; 
-            flex-direction: column-reverse; 
-            width: 100%; 
-            max-width: 450px; 
-            margin: 0 auto;
-            background-color: white; 
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            display: flex; flex-direction: column-reverse; width: 100%; max-width: 450px; margin: 0 auto;
+            background-color: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
         }
         .news-text-box { width: 100%; padding: 24px; text-align: left; background-color: white; }
         .news-image-wrapper { width: 100%; height: 220px; }
         .news-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
         @media (max-width: 1023px) {
-            .news-carousel-wrapper .carousel-track {
-                flex-direction: column !important; 
-                gap: 30px; 
-                transform: none !important; 
-            }
+            .news-carousel-wrapper .carousel-track { flex-direction: column !important; gap: 30px; transform: none !important; }
             .news-carousel-wrapper .carousel-viewport { overflow: visible !important; }
             .news-carousel-wrapper .carousel-slide { padding: 0; margin-bottom: 0; }
             .news-carousel-wrapper .nav-button, .news-carousel-wrapper .carousel-dots { display: none !important; }
@@ -163,33 +255,14 @@
         .schedule-header { background-color: #B32424; color: #FFFFFF; font-weight: 800; font-size: 24px; padding: 15px; text-align: center; text-transform: uppercase; }
         
         td.time-cell {
-            background-color: #FFE7B6; 
-            color: #000000; 
-            font-weight: 800; 
-            font-size: 15px; 
-            text-align: center;
-            vertical-align: middle; 
-            padding: 10px; 
-            width: 130px; 
-            border: 1px solid #F9D7C7;
-            white-space: nowrap; 
+            background-color: #FFE7B6; color: #000000; font-weight: 800; font-size: 15px; text-align: center;
+            vertical-align: middle; padding: 10px; width: 130px; border: 1px solid #F9D7C7; white-space: nowrap; 
         }
-        
         td.session-cell {
-            background-color: #CD4446; 
-            color: #FFFFFF; 
-            padding: 15px 20px; 
-            vertical-align: middle; 
-            text-align: left; 
-            border: 1px solid #F9D7C7;
+            background-color: #CD4446; color: #FFFFFF; padding: 15px 20px; vertical-align: middle; text-align: left; border: 1px solid #F9D7C7;
         }
-        
         td.content-cell {
-            background-color: #F4C2B8; 
-            color: #2F0602; 
-            padding: 0; 
-            vertical-align: top; 
-            border: 1px solid #F9D7C7;
+            background-color: #F4C2B8; color: #2F0602; padding: 0; vertical-align: top; border: 1px solid #F9D7C7;
         }
         
         .simultaneous-grid { display: grid; grid-template-columns: 1fr; height: 100%; }
@@ -203,20 +276,22 @@
             .event-item { border-bottom: none; border-right: 1px solid #F9D7C7; }
             .event-item:last-child { border-right: none; }
         }
+
+        /* UX Mobile Tabela */
+        @media (max-width: 768px) {
+            .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td { display: block; width: 100%; }
+            .schedule-table tr { margin-bottom: 20px; border: 1px solid #F9D7C7; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+            td.time-cell { width: 100% !important; text-align: center; padding: 12px; border-bottom: 1px solid #F9D7C7; background-color: #FFE7B6; }
+            td.session-cell, td.content-cell { width: 100%; border: none; padding: 0; }
+            td.session-cell { padding: 20px; }
+            .simultaneous-grid { display: flex; flex-direction: column; }
+            .event-item { border-bottom: 1px solid rgba(0,0,0,0.05); min-height: auto; padding: 20px 15px; }
+            .event-item:last-child { border-bottom: none; }
+        }
         
         .room-tag { color: #C02626; font-weight: 800; font-size: 13px; text-transform: uppercase; margin-top: 8px; display: block; }
         .event-text { font-weight: 500; font-size: 14px; line-height: 1.4; }
         .event-text strong { color: #000000; font-weight: 800; }
-        
-        .btn-table-buy {
-            font-weight: 800; text-transform: uppercase; font-size: 12px;
-            padding: 0px 15px; 
-            height: 32px;
-            line-height: 32px;
-            border-radius: 4px; display: inline-block; margin-top: 10px; transition: transform 0.2s; white-space: nowrap;
-            color: #2F0602;
-        }
-        .btn-table-buy:hover { transform: scale(1.05); opacity: 0.9; }
         
         .sub-header-cell {
             background-color: #CD4446; color: #FFFFFF; font-weight: 800; text-transform: uppercase;
@@ -235,22 +310,18 @@
         }
 
         /* ACORDEÃO */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.4s ease, margin-top 0.4s ease;
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, opacity 0.4s ease, margin-top 0.4s ease;
             opacity: 0;
         }
-        .accordion-content.open {
-            opacity: 1;
-        }
+        .accordion-content.open { opacity: 1; }
+
+        /* FUNDO SÓLIDO PADRÃO */
+        .bg-solid-dark { background-color: #3B0000; }
 
         /* HERO */
         .bg-hero-image {
             background-image: url('https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp');
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;
+            background-size: cover; background-position: top center; background-repeat: no-repeat;
         }
 
         /* MODAL */
@@ -264,28 +335,53 @@
         }
         .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
         .close-modal:hover, .close-modal:focus { color: black; text-decoration: none; cursor: pointer; }
+
+        /* MENU MOBILE */
+        .mobile-menu-wrapper {
+            display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute; top: 100%; left: 0; width: 100%; z-index: 40; background-color: #2F0602;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .mobile-menu-wrapper.open { grid-template-rows: 1fr; border-top: 1px solid rgba(255,255,255,0.1); }
+        .mobile-menu-inner { overflow: hidden; min-height: 0; }
     </style>
 </head>
 <body>
 
     <!-- MENU -->
-    <nav class="bg-menu-bar w-full fixed top-0 left-0 z-50 shadow-lg h-16">
-        <div class="max-w-[1400px] mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-center h-16 space-x-8">
-                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Home</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Novidades</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Pré-Jornada</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Palestrantes</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Programação</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Local</a>
-                    <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Dúvidas</a>
+    <nav class="bg-menu-bar w-full fixed top-0 left-0 z-50 shadow-lg h-14 lg:h-12 flex items-center">
+        <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 h-full">
+            <div class="flex items-center justify-between lg:justify-center w-full h-full">
+                <div class="lg:hidden w-full flex justify-end items-center">
+                    <button id="mobile-menu-btn" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors"><i data-lucide="menu" class="w-6 h-6"></i></button>
                 </div>
-                <div class="hidden lg:block">
-                    <a href="#" class="bg-ticket-btn rounded-full hover:opacity-90 transition-opacity whitespace-nowrap btn-custom-padding">Compre seu Ingresso</a>
+                <div class="hidden lg:flex items-center justify-center gap-8 h-full">
+                    <div class="flex items-center space-x-6 xl:space-x-8">
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Home</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Novidades</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Pré-Jornada</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Palestrantes</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Programação</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Local</a>
+                        <a href="#" class="text-white text-[12px] xl:text-[13px] font-bold uppercase hover:text-gray-300 transition-colors">Dúvidas</a>
+                    </div>
+                    <div>
+                        <a href="#" class="bg-ticket-btn rounded-full hover:opacity-90 transition-opacity whitespace-nowrap btn-custom-padding">Compre seu Ingresso</a>
+                    </div>
                 </div>
-                <div class="lg:hidden flex items-center">
-                    <button class="text-white p-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="lg:hidden mobile-menu-wrapper">
+            <div class="mobile-menu-inner">
+                <div class="flex flex-col px-4 py-6 space-y-4 text-center">
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Home</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Novidades</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Pré-Jornada</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Palestrantes</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Programação</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Local</a>
+                    <a href="#" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Dúvidas</a>
+                    <a href="#" class="bg-ticket-btn inline-block mt-4 w-full py-2">Compre seu Ingresso</a>
                 </div>
             </div>
         </div>
@@ -293,59 +389,36 @@
 
     <!-- HERO -->
     <div class="bg-hero-image w-full">
-        <header class="flex flex-col items-center justify-center pt-24 pb-12 px-4">
+        <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
             <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-                <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada Sul-Americana de Pilates" class="w-auto h-40 md:h-56 object-contain"></div>
-                <div class="mb-2"><p class="text-date text-xl md:text-2xl font-bold tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
-                <div class="mb-10"><p class="text-white text-lg md:text-xl font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
-                <div class="mb-16"><a href="#" class="btn-hero shadow-xl">QUERO PARTICIPAR!</a></div>
+                <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada Sul-Americana de Pilates" class="max-w-[340px] h-auto object-contain"></div>
+                <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
+                <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
+                
+                <div class="mb-8"><a href="#" class="btn-hero-lg shadow-xl">QUERO PARTICIPAR!</a></div>
 
-                <h2 class="text-orange-custom text-2xl md:text-3xl font-normal mb-8">O que esperar da X Jornada?</h2>
+                <h2 class="text-orange-custom text-2xl md:text-[30px] font-normal mb-8">O que esperar da X Jornada?</h2>
 
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-12">
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Workshops de qualidade</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Contato direto com 17 palestrantes renomados</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Networking com todo o Brasil</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Jornada Business</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Material Didático</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Temas variados para todas as vertentes</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" class="w-12 h-12 icon-white object-contain mb-4">
-                        <p class="text-white text-sm leading-tight">600 Congressistas<br>de todo o Brasil</p>
-                    </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[980px] mx-auto mb-12">
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Workshops de qualidade</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Contato direto com 17 palestrantes renomados</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Networking com todo o Brasil</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Jornada Business</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Material Didático</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Temas variados para todas as vertentes</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">600 Congressistas<br>de todo o Brasil</p></div>
                 </div>
             </div>
         </header>
     </div>
 
     <!-- PALESTRANTES -->
-    <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-12 pb-12 px-4">
+    <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-0 pb-12 px-4">
         <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
             
             <div class="w-full mb-12">
-                <h2 class="text-white text-2xl md:text-4xl font-light mb-12">Palestrantes confirmados na <span class="text-orange-custom font-bold">Edição 2026:</span></h2>
+                <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
                 <div class="carousel-wrapper">
                     <button class="nav-button nav-prev" id="prevBtn_speakers"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
                     <div class="carousel-viewport"><div class="carousel-track" id="track_speakers"></div></div>
@@ -354,10 +427,10 @@
                 </div>
             </div>
 
-            <div class="mb-12"><a href="#" class="btn-hero shadow-xl mb-8">GARANTA JÁ A SUA VAGA</a></div>
+            <div class="mb-12"><a href="#" class="btn-global-cta shadow-xl mb-8">GARANTA JÁ A SUA VAGA</a></div>
 
             <div class="w-full mb-12">
-                <p class="text-white text-xl md:text-3xl font-light mb-8">Novidades na <span class="text-orange-custom font-bold">Edição 2026:</span></p>
+                <p class="text-white text-xl md:text-[30px] font-light mb-8">Novidades na <span class="text-[#CA3624] font-bold">Edição 2026:</span></p>
                 <div class="carousel-wrapper news-carousel-wrapper">
                     <button class="nav-button nav-prev" id="prevBtn_news"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
                     <div class="carousel-viewport"><div class="carousel-track" id="track_news"></div></div>
@@ -366,10 +439,10 @@
                 </div>
             </div>
 
-            <div class="mb-16"><a href="#" class="btn-hero shadow-xl">COMPRE SEU INGRESSO</a></div>
+            <div class="mb-16"><a href="#" class="btn-global-cta shadow-xl">COMPRE SEU INGRESSO</a></div>
 
             <div class="w-full max-w-4xl mx-auto mb-24">
-                <h2 class="text-white text-2xl md:text-4xl font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
+                <h2 class="text-white text-2xl md:text-[30px] font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
                 <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 group" id="videoWrapper">
                     <div class="thumbnail-overlay" onclick="playVideo()">
                         <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
@@ -382,27 +455,27 @@
     </section>
 
     <!-- PRÉ-JORNADA -->
-    <section class="w-full flex items-end pt-12 md:pt-20 pb-0" style="background-color: #C01B1C;">
+    <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #C01B1C;">
         <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between">
             <div class="w-full md:w-1/2 text-center md:text-left z-10 flex flex-col items-center md:items-start pl-0 md:pl-10 pb-12 md:pb-20">
                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" class="w-64 md:w-80 mb-8">
                 <h3 class="text-white text-lg md:text-xl font-normal leading-snug mb-4 max-w-lg">Aprenda tudo sobre Planejamento de Aula,<br class="hidden md:block"> Comando Verbal e Sequências</h3>
                 <p class="text-base font-light italic mb-6 opacity-90" style="color: #FEA919;">com Mariana Dias e Marcella Contursi</p>
                 <p class="text-white text-base md:text-lg font-bold uppercase tracking-wide mb-1">22 de maio (sexta-feira) das 9h às 12h</p>
-                <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-5xl font-extrabold tracking-tighter">por R$147</span></div>
-                <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-hero shadow-xl px-8 text-sm">COMPRE SEU INGRESSO</a>
+                <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-[30px] font-extrabold tracking-tighter">por R$147</span></div>
+                <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-global-cta shadow-xl text-sm">COMPRE SEU INGRESSO</a>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-0">
                  <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto.webp" alt="Mariana Dias e Marcella Contursi" class="w-full max-w-[500px] xl:max-w-[650px] h-auto object-contain block">
             </div>
         </div>
     </section>
 
     <!-- PROGRAMAÇÃO -->
-    <section class="w-full py-16 px-4 bg-white">
+    <section class="w-full pt-[40px] pb-[1px] px-4 bg-white">
         <div class="max-w-[1280px] mx-auto">
             <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-2" style="color: #2F0602;">Programação Completa:</h2>
+                <h2 class="text-3xl md:text-[30px] font-bold uppercase mb-2" style="color: #2F0602;">Programação Completa:</h2>
                 <p class="text-lg font-light italic" style="color: #2F0602;">Programação sujeita à alterações</p>
             </div>
 
@@ -501,16 +574,15 @@
                 </table>
             </div>
 
-            <div class="text-center mt-12 mb-12"><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-hero shadow-xl px-10 text-base">GARANTA JÁ A SUA VAGA</a></div>
+            <div class="text-center mt-12 mb-12"><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base">GARANTA JÁ A SUA VAGA</a></div>
         </div>
     </section>
 
     <!-- BENEFÍCIOS -->
-    <section class="w-full flex items-end pt-16 md:pt-24 pb-0" style="background-color: #BF181C;">
+    <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #BF181C;">
         <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between gap-12">
             <div class="w-full md:w-3/5 text-left pb-16 md:pb-24 z-10">
-                <!-- CORREÇÃO: Cor alterada para #2F0602 -->
-                <h2 class="text-2xl md:text-4xl font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
+                <h2 class="text-2xl md:text-[30px] font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10 text-white text-sm md:text-base font-light">
                     <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> 5 Workshops para escolher;</div>
                     <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Entrada na Jornada Business;</div>
@@ -528,7 +600,9 @@
                     </div>
                     <div class="bg-[#D59126] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full shadow-lg relative">
                         <div class="text-center md:text-left"><span class="block text-white font-extrabold text-xl uppercase mb-1">MELHOR OFERTA!</span><span class="block text-[#2F0602] font-semibold text-sm">Desconto especial para pagamento à vista via PIX</span></div>
-                        <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 rounded-full hover:bg-black transition-transform transform hover:scale-105 h-[48px] leading-[48px] flex items-center justify-center">CLIQUE AQUI</a>
+                        <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 py-3 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;">
+                            CLIQUE AQUI
+                        </a>
                     </div>
                 </div>
             </div>
@@ -537,23 +611,23 @@
     </section>
 
     <!-- HOTEL -->
-    <section class="w-full py-16 md:py-24 px-4" style="background-color: #3B0000;">
+    <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
         <div class="max-w-[1280px] mx-auto w-full flex flex-col md:flex-row items-start gap-12">
             <div class="w-full md:w-1/2 text-left pl-4 md:pl-12">
-                <h2 class="text-3xl md:text-4xl font-normal mb-6"><span class="text-white">Hotel</span> <span class="text-[#CF3826] font-bold">Wish Serrano Resort</span></h2>
+                <h2 class="text-3xl md:text-[30px] font-normal mb-6"><span class="text-white">Hotel</span> <span class="text-[#CF3826] font-bold">Wish Serrano Resort</span></h2>
                 <p class="text-white text-lg font-bold italic mb-6">Wish Serrano Resort: elegância, conforto e experiências inesquecíveis em Gramado!</p>
                 <p class="text-white text-base font-light leading-relaxed mb-8 opacity-90">Localizado no coração de Gramado, o Wish Serrano foi eleito um dos Top5 melhores hotéis de Gramado e é um verdadeiro símbolo da hotelaria de alto padrão no Sul do Brasil. Em meio às paisagens encantadoras da Serra Gaúcha, o resort oferece uma experiência única de hospitalidade, reunindo sofisticação, aconchego e bem-estar para quem busca dias de descanso com charme e tranquilidade.</p>
                 <p class="text-white text-sm font-light mb-4">Congressista tem desconto para se hospedar:</p>
-                <a href="https://eventos.grupowish.com/vollpilates2026" target="_blank" class="btn-hero shadow-xl px-8 text-sm">FAÇA SUA HOSPEDAGEM</a>
+                <a href="https://eventos.grupowish.com/vollpilates2026" target="_blank" class="btn-global-cta shadow-xl text-sm">FAÇA SUA HOSPEDAGEM</a>
             </div>
             <div class="w-full md:w-1/2 flex justify-center"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Fotohotel.webp" class="w-full max-w-[450px] md:max-w-[500px] h-auto object-cover rounded-lg shadow-2xl"></div>
         </div>
     </section>
 
     <!-- DÚVIDAS -->
-    <section class="w-full py-16 px-4" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
+    <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
         <div class="max-w-[1000px] mx-auto">
-            <h2 class="text-orange-custom text-3xl md:text-4xl font-normal mb-12 text-center">Dúvidas</h2>
+            <h2 class="text-orange-custom text-3xl md:text-[30px] font-normal mb-12 text-center">Dúvidas</h2>
             <div class="space-y-4" id="accordion-container">
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
                 <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
@@ -568,9 +642,9 @@
     </section>
 
     <!-- PATROCINADORES -->
-    <section class="w-full py-16" style="background-color: #F7F7F7;">
+    <section class="w-full py-[40px]" style="background-color: #F7F7F7;">
         <div class="max-w-[1280px] mx-auto text-center px-4">
-            <h2 class="text-3xl md:text-4xl font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
+            <h2 class="text-3xl md:text-[30px] font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
                  <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
                  <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
@@ -580,9 +654,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="w-full py-16 px-4 flex flex-col items-center text-center" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
+    <footer class="w-full py-[40px] px-4 flex flex-col items-center text-center" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
          <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada" class="w-48 md:w-64 opacity-100"></div>
-         <a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-hero shadow-xl px-10 text-base mb-6">COMPRE AQUI O SEU INGRESSO</a>
+         <a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base mb-6">COMPRE AQUI O SEU INGRESSO</a>
          <p class="text-white/80 text-xs font-light max-w-2xl">*ao fazer sua inscrição você está de acordo com a política de vendas da empresa</p>
     </footer>
     <div class="w-full py-6 bg-white text-center border-t border-gray-200"><p class="text-[#340A02] text-sm font-normal">© 2014-2026 X Jornada Sul-Americana de Pilates. Todos os direitos reservados.</p></div>
@@ -594,6 +668,23 @@
         </div>
     </div>
 
+    <!-- SCRIPT: MENU MOBILE -->
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileBtn && mobileMenu){
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+        }
+    </script>
+
+    <!-- SCRIPT PRINCIPAL -->
     <script>
         lucide.createIcons();
         function playVideo() { 
@@ -637,8 +728,21 @@
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 if(type==='speaker') {
-                    // CORREÇÃO AQUI: Alterado 'h-56' para 'h-auto' na imagem para não ficar quadrada
-                    slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center"><img src="${item.image}" alt="${item.name}" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-2xl uppercase">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
+                    // 1. Nome: text-[30px] (Aumentado de 20px)
+                    // 2. Descrição: text-[20px] (Aumentado de 18px)
+                    // 3. Imagem: w-56 h-auto (Mantém proporção, não quadrada)
+                    // 4. Container de texto: max-w-[240px] mx-auto (apenas mobile) para afastar das setas; md:max-w-none (desktop)
+                    // 5. Botão: md:hidden (Só no mobile)
+                    slide.innerHTML = `
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center w-full px-14 md:px-0">
+                            <img src="${item.image}" alt="${item.name}" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;">
+                            <div class="w-full md:w-2/3 text-center md:text-left">
+                                <h3 class="text-speaker-name font-bold text-[30px] uppercase leading-tight">${item.name}</h3>
+                                <p class="text-white text-[20px] mt-4 leading-relaxed hidden md:block">${item.text}</p>
+                                <button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button>
+                            </div>
+                        </div>
+                    `;
                 } else if (type === 'news') {
                     slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" style="pointer-events: none;"></div></div>`; 
                 }
