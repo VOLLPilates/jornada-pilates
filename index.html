@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS, uma das mais belas cidades do Brasil.">
     <title>Jornada Sul-Americana de Pilates</title>
+    
+    <!-- OTIMIZAÇÃO: Preload da imagem principal para carregar instantaneamente -->
+    <link rel="preload" as="image" href="https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- OTIMIZAÇÃO: Removida a biblioteca Lucide externa para reduzir peso. Ícones agora são SVG inline. -->
+
     <style>
         body {
             margin: 0;
@@ -45,14 +51,6 @@
         .bg-ticket-btn:hover, .btn-hero:hover, .btn-table-buy:hover, .payment-btn-float:hover {
             background-color: #e5a030 !important;
             transform: scale(1.05);
-        }
-
-        /* --- CORREÇÃO DE VISIBILIDADE DO BOTÃO --- */
-        /* Esta regra força a ocultação no desktop, sobrepondo o !important do display: inline-flex */
-        @media (min-width: 768px) {
-            .md\:hidden {
-                display: none !important;
-            }
         }
 
         /* --- BOTÃO GRANDE (HERO) --- */
@@ -142,26 +140,6 @@
             background-color: #e5a030 !important;
             transform: translateX(-50%) scale(1.05) !important; 
         }
-        
-        /* Botão da Tabela */
-        .btn-table-buy {
-            background-color: #FCB541 !important;
-            color: #340A02 !important;
-            font-weight: 500 !important; 
-            text-transform: uppercase; 
-            font-size: 12px;
-            white-space: nowrap;
-            border: none !important;
-            padding: 0px 15px; 
-            height: 32px; 
-            line-height: 32px;
-            border-radius: 4px; 
-            display: inline-block; 
-            margin-top: 10px; 
-            transition: transform 0.2s; 
-            cursor: pointer;
-        }
-        .btn-table-buy:hover { transform: scale(1.05); opacity: 0.9; }
 
         /* CARDS */
         .feature-card {
@@ -172,7 +150,8 @@
         .icon-white { filter: brightness(0) invert(1); }
 
         /* CARROSSEL GERAL */
-        .carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: visible; }
+        /* OTIMIZAÇÃO: min-height para evitar CLS */
+        .carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: visible; min-height: 300px; }
         .carousel-viewport { overflow: hidden; width: 100%; touch-action: pan-y; cursor: grab; }
         .carousel-viewport:active { cursor: grabbing; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
@@ -353,7 +332,10 @@
         <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 h-full">
             <div class="flex items-center justify-between lg:justify-center w-full h-full">
                 <div class="lg:hidden w-full flex justify-end items-center">
-                    <button id="mobile-menu-btn" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                    <!-- OTIMIZAÇÃO: aria-label adicionado e ícone SVG inline -->
+                    <button id="mobile-menu-btn" aria-label="Abrir menu principal" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
                 </div>
                 <div class="hidden lg:flex items-center justify-center gap-8 h-full">
                     <div class="flex items-center space-x-6 xl:space-x-8">
@@ -391,7 +373,11 @@
     <div class="bg-hero-image w-full">
         <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
             <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-                <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada Sul-Americana de Pilates" class="max-w-[340px] h-auto object-contain"></div>
+                <!-- OTIMIZAÇÃO: H1 e dimensões na imagem -->
+                <h1 class="mb-8">
+                    <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates - Logo" width="340" height="150" class="max-w-[340px] h-auto object-contain mx-auto">
+                </h1>
+                
                 <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
                 <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
                 
@@ -400,14 +386,15 @@
                 <h2 class="text-orange-custom text-2xl md:text-[30px] font-normal mb-8">O que esperar da X Jornada?</h2>
 
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[980px] mx-auto mb-12">
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Workshops de qualidade</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Contato direto com 17 palestrantes renomados</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Networking com todo o Brasil</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Jornada Business</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Material Didático</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Temas variados para todas as vertentes</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">600 Congressistas<br>de todo o Brasil</p></div>
+                    <!-- OTIMIZAÇÃO: Ícones com dimensões e loading lazy -->
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Workshops de qualidade</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Contato direto com 17 palestrantes renomados</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Networking com todo o Brasil</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Jornada Business</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Material Didático</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Temas variados para todas as vertentes</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p></div>
+                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">600 Congressistas<br>de todo o Brasil</p></div>
                 </div>
             </div>
         </header>
@@ -420,9 +407,14 @@
             <div class="w-full mb-12">
                 <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
                 <div class="carousel-wrapper">
-                    <button class="nav-button nav-prev" id="prevBtn_speakers"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                    <!-- OTIMIZAÇÃO: aria-label e ícones SVG inline -->
+                    <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
                     <div class="carousel-viewport"><div class="carousel-track" id="track_speakers"></div></div>
-                    <button class="nav-button nav-next" id="nextBtn_speakers"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                    <button class="nav-button nav-next" id="nextBtn_speakers" aria-label="Próximo palestrante">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
                     <div class="carousel-dots" id="dotsContainer_speakers"></div>
                 </div>
             </div>
@@ -432,9 +424,13 @@
             <div class="w-full mb-12">
                 <p class="text-white text-xl md:text-[30px] font-light mb-8">Novidades na <span class="text-[#CA3624] font-bold">Edição 2026:</span></p>
                 <div class="carousel-wrapper news-carousel-wrapper">
-                    <button class="nav-button nav-prev" id="prevBtn_news"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                    <button class="nav-button nav-prev" id="prevBtn_news" aria-label="Novidade anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
                     <div class="carousel-viewport"><div class="carousel-track" id="track_news"></div></div>
-                    <button class="nav-button nav-next" id="nextBtn_news"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                    <button class="nav-button nav-next" id="nextBtn_news" aria-label="Próxima novidade">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
                     <div class="carousel-dots" id="dotsContainer_news"></div>
                 </div>
             </div>
@@ -445,8 +441,9 @@
                 <h2 class="text-white text-2xl md:text-[30px] font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
                 <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 group" id="videoWrapper">
                     <div class="thumbnail-overlay" onclick="playVideo()">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                        <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                        <!-- OTIMIZAÇÃO: loading lazy e dimensões -->
+                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" width="896" height="504" loading="lazy" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div class="play-button" aria-label="Reproduzir vídeo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
                     </div>
                     <div class="video-container" id="iframeContainer"></div>
                 </div>
@@ -458,15 +455,15 @@
     <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #C01B1C;">
         <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between">
             <div class="w-full md:w-1/2 text-center md:text-left z-10 flex flex-col items-center md:items-start pl-0 md:pl-10 pb-12 md:pb-20">
-                <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" class="w-64 md:w-80 mb-8">
+                <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" width="320" height="150" loading="lazy" class="w-64 md:w-80 mb-8">
                 <h3 class="text-white text-lg md:text-xl font-normal leading-snug mb-4 max-w-lg">Aprenda tudo sobre Planejamento de Aula,<br class="hidden md:block"> Comando Verbal e Sequências</h3>
                 <p class="text-base font-light italic mb-6 opacity-90" style="color: #FEA919;">com Mariana Dias e Marcella Contursi</p>
                 <p class="text-white text-base md:text-lg font-bold uppercase tracking-wide mb-1">22 de maio (sexta-feira) das 9h às 12h</p>
                 <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-[30px] font-extrabold tracking-tighter">por R$147</span></div>
                 <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-global-cta shadow-xl text-sm">COMPRE SEU INGRESSO</a>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-0">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto.webp" alt="Mariana Dias e Marcella Contursi" class="w-full max-w-[500px] xl:max-w-[650px] h-auto object-contain block">
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto.webp" alt="Mariana Dias e Marcella Contursi" width="600" height="500" loading="lazy" class="w-full max-w-[500px] xl:max-w-[650px] h-auto object-contain block">
             </div>
         </div>
     </section>
@@ -578,20 +575,22 @@
         </div>
     </section>
 
-    <!-- BENEFÍCIOS -->
+    <!-- BENEFÍCIOS: PADDING TOP 40px FIXO, BOTTOM 0 -->
     <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #BF181C;">
         <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between gap-12">
             <div class="w-full md:w-3/5 text-left pb-16 md:pb-24 z-10">
+                <!-- CORREÇÃO: Cor alterada para #2F0602 -->
                 <h2 class="text-2xl md:text-[30px] font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10 text-white text-sm md:text-base font-light">
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> 5 Workshops para escolher;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Entrada na Jornada Business;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Entrada na abertura oficial;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Certificado de participação VOLL;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Acesso online ao material de todos os palestrantes;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Camiseta da Jornada;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> 1 Workshop Extra;</div>
-                    <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Kit do congressista (sacochila, bloco e caneta).</div>
+                    <!-- OTIMIZAÇÃO: Ícone check SVG inline -->
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 5 Workshops para escolher;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na Jornada Business;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na abertura oficial;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Certificado de participação VOLL;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Acesso online ao material de todos os palestrantes;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Camiseta da Jornada;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 1 Workshop Extra;</div>
+                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Kit do congressista (sacochila, bloco e caneta).</div>
                 </div>
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col sm:flex-row gap-6">
@@ -600,17 +599,19 @@
                     </div>
                     <div class="bg-[#D59126] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full shadow-lg relative">
                         <div class="text-center md:text-left"><span class="block text-white font-extrabold text-xl uppercase mb-1">MELHOR OFERTA!</span><span class="block text-[#2F0602] font-semibold text-sm">Desconto especial para pagamento à vista via PIX</span></div>
+                        <!-- BOTÃO CORRIGIDO: Altura automática com padding seguro para não vazar texto -->
                         <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 py-3 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;">
                             CLIQUE AQUI
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-2/5 flex justify-center md:justify-end mt-0"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto-1.webp" alt="Participante" class="w-full max-w-[400px] xl:max-w-[500px] h-auto object-contain block"></div>
+            <!-- CORREÇÃO: REMOVIDA MARGEM NEGATIVA PARA EVITAR LEAK -->
+            <div class="w-full md:w-2/5 flex justify-center md:justify-end mt-0"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto-1.webp" alt="Participante" width="600" height="500" loading="lazy" class="w-full max-w-[400px] xl:max-w-[500px] h-auto object-contain block"></div>
         </div>
     </section>
 
-    <!-- HOTEL -->
+    <!-- HOTEL: PADDING Y 40px -->
     <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
         <div class="max-w-[1280px] mx-auto w-full flex flex-col md:flex-row items-start gap-12">
             <div class="w-full md:w-1/2 text-left pl-4 md:pl-12">
@@ -618,13 +619,14 @@
                 <p class="text-white text-lg font-bold italic mb-6">Wish Serrano Resort: elegância, conforto e experiências inesquecíveis em Gramado!</p>
                 <p class="text-white text-base font-light leading-relaxed mb-8 opacity-90">Localizado no coração de Gramado, o Wish Serrano foi eleito um dos Top5 melhores hotéis de Gramado e é um verdadeiro símbolo da hotelaria de alto padrão no Sul do Brasil. Em meio às paisagens encantadoras da Serra Gaúcha, o resort oferece uma experiência única de hospitalidade, reunindo sofisticação, aconchego e bem-estar para quem busca dias de descanso com charme e tranquilidade.</p>
                 <p class="text-white text-sm font-light mb-4">Congressista tem desconto para se hospedar:</p>
+                <!-- BOTÃO 5 - HOTEL: Usando btn-global-cta -->
                 <a href="https://eventos.grupowish.com/vollpilates2026" target="_blank" class="btn-global-cta shadow-xl text-sm">FAÇA SUA HOSPEDAGEM</a>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Fotohotel.webp" class="w-full max-w-[450px] md:max-w-[500px] h-auto object-cover rounded-lg shadow-2xl"></div>
+            <div class="w-full md:w-1/2 flex justify-center"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Fotohotel.webp" class="w-full max-w-[450px] md:max-w-[500px] h-auto object-cover rounded-lg shadow-2xl" loading="lazy" alt="Hotel Wish Serrano" width="500" height="300"></div>
         </div>
     </section>
 
-    <!-- DÚVIDAS -->
+    <!-- DÚVIDAS: PADDING Y 40px (BORDA SUPERIOR REMOVIDA AQUI TAMBÉM) -->
     <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
         <div class="max-w-[1000px] mx-auto">
             <h2 class="text-orange-custom text-3xl md:text-[30px] font-normal mb-12 text-center">Dúvidas</h2>
@@ -641,21 +643,24 @@
         </div>
     </section>
 
-    <!-- PATROCINADORES -->
+    <!-- PATROCINADORES: PADDING Y 40px -->
     <section class="w-full py-[40px]" style="background-color: #F7F7F7;">
         <div class="max-w-[1280px] mx-auto text-center px-4">
             <h2 class="text-3xl md:text-[30px] font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" class="h-auto w-auto max-w-[100px] md:max-w-[120px] max-h-[60px] object-contain">
+                 <!-- LAZY LOADING E DIMENSÕES -->
+                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
+                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
+                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" width="120" height="60" loading="lazy" class="h-auto w-auto max-w-[100px] md:max-w-[120px] max-h-[60px] object-contain">
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER: PADDING Y 40px -->
     <footer class="w-full py-[40px] px-4 flex flex-col items-center text-center" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
-         <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada" class="w-48 md:w-64 opacity-100"></div>
+         <!-- LAZY LOADING -->
+         <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada" width="250" height="120" loading="lazy" class="w-48 md:w-64 opacity-100"></div>
+         <!-- BOTÃO 6 - FOOTER: Usando btn-global-cta -->
          <a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base mb-6">COMPRE AQUI O SEU INGRESSO</a>
          <p class="text-white/80 text-xs font-light max-w-2xl">*ao fazer sua inscrição você está de acordo com a política de vendas da empresa</p>
     </footer>
@@ -686,7 +691,8 @@
 
     <!-- SCRIPT PRINCIPAL -->
     <script>
-        lucide.createIcons();
+        // OTIMIZAÇÃO: Removida a chamada ao lucide.createIcons() pois agora usamos SVG inline
+        
         function playVideo() { 
             const wrapper = document.getElementById('videoWrapper');
             const iframeContainer = document.getElementById('iframeContainer');
@@ -700,7 +706,7 @@
             const speaker = speakersData[index];
             const modal = document.getElementById('speaker-modal');
             const content = document.getElementById('modal-body');
-            content.innerHTML = `<span class="close-modal absolute top-4 right-4 text-gray-500 text-2xl font-bold cursor-pointer" onclick="closeSpeakerModal()">&times;</span><div class="text-center mt-6"><img src="${speaker.image}" alt="${speaker.name}" class="w-48 h-48 object-cover rounded-full mx-auto mb-4 border-4 border-[#FCB541]"><h3 class="text-2xl font-bold text-[#CF3826] mb-4 uppercase">${speaker.name}</h3><p class="text-gray-800 text-sm leading-relaxed text-left">${speaker.text}</p></div>`;
+            content.innerHTML = `<span class="close-modal absolute top-4 right-4 text-gray-500 text-2xl font-bold cursor-pointer" onclick="closeSpeakerModal()">&times;</span><div class="text-center mt-6"><img src="${speaker.image}" alt="${speaker.name}" loading="lazy" class="w-48 h-48 object-cover rounded-full mx-auto mb-4 border-4 border-[#FCB541]"><h3 class="text-2xl font-bold text-[#CF3826] mb-4 uppercase">${speaker.name}</h3><p class="text-gray-800 text-sm leading-relaxed text-left">${speaker.text}</p></div>`;
             modal.style.display = "flex";
             document.body.style.overflow = "hidden"; 
         }
@@ -728,23 +734,11 @@
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 if(type==='speaker') {
-                    // 1. Nome: text-[30px] (Aumentado de 20px)
-                    // 2. Descrição: text-[20px] (Aumentado de 18px)
-                    // 3. Imagem: w-56 h-auto (Mantém proporção, não quadrada)
-                    // 4. Container de texto: max-w-[240px] mx-auto (apenas mobile) para afastar das setas; md:max-w-none (desktop)
-                    // 5. Botão: md:hidden (Só no mobile)
-                    slide.innerHTML = `
-                        <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center w-full px-14 md:px-0">
-                            <img src="${item.image}" alt="${item.name}" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;">
-                            <div class="w-full md:w-2/3 text-center md:text-left">
-                                <h3 class="text-speaker-name font-bold text-[30px] uppercase leading-tight">${item.name}</h3>
-                                <p class="text-white text-[20px] mt-4 leading-relaxed hidden md:block">${item.text}</p>
-                                <button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button>
-                            </div>
-                        </div>
-                    `;
+                    // ADICIONADO LOADING LAZY E WIDTH/HEIGHT
+                    slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center w-full px-14 md:px-0"><img src="${item.image}" alt="${item.name}" width="224" height="224" loading="lazy" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-[20px] uppercase leading-tight md:text-[30px]">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block md:text-[18px]">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
                 } else if (type === 'news') {
-                    slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" style="pointer-events: none;"></div></div>`; 
+                    // ADICIONADO LOADING LAZY E WIDTH/HEIGHT
+                    slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" width="500" height="350" loading="lazy" style="pointer-events: none;"></div></div>`; 
                 }
                 track.appendChild(slide);
                 const dot = document.createElement('div');
