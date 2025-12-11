@@ -6,12 +6,12 @@
     <meta name="description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS, uma das mais belas cidades do Brasil.">
     <title>Jornada Sul-Americana de Pilates</title>
     
-    <!-- OTIMIZAÇÃO: Preload da imagem principal para carregar instantaneamente (LCP) -->
+    <!-- OTIMIZAÇÃO: Preload da imagem principal -->
     <link rel="preload" as="image" href="https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             margin: 0;
@@ -168,8 +168,7 @@
         .icon-white { filter: brightness(0) invert(1); }
 
         /* CARROSSEL GERAL */
-        /* OTIMIZAÇÃO: min-height para evitar CLS */
-        .carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: visible; min-height: 300px; }
+        .carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: visible; }
         .carousel-viewport { overflow: hidden; width: 100%; touch-action: pan-y; cursor: grab; }
         .carousel-viewport:active { cursor: grabbing; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
@@ -239,12 +238,11 @@
         /* VÍDEO */
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; background-color: black; border-radius: 8px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        /* CORREÇÃO ACESSIBILIDADE: Alterado para button no HTML, mantido estilo */
+        /* CORREÇÃO ACESSIBILIDADE: button em vez de div, sem outline no foco */
         .play-button {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px;
             background-color: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: transform 0.2s, background-color 0.2s; z-index: 10;
-            border: none; outline: none;
+            cursor: pointer; transition: transform 0.2s, background-color 0.2s; z-index: 10; border: none; outline: none;
         }
         .play-button:hover { transform: translate(-50%, -50%) scale(1.1); background-color: red; }
         .thumbnail-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 5; }
@@ -352,9 +350,8 @@
         <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 h-full">
             <div class="flex items-center justify-between lg:justify-center w-full h-full">
                 <div class="lg:hidden w-full flex justify-end items-center">
-                    <button id="mobile-menu-btn" aria-label="Abrir menu principal" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-                    </button>
+                    <!-- ACESSIBILIDADE: aria-expanded e aria-controls no botão mobile -->
+                    <button id="mobile-menu-btn" aria-label="Abrir menu principal" aria-expanded="false" aria-controls="mobile-menu" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors"><i data-lucide="menu" class="w-6 h-6"></i></button>
                 </div>
                 <div class="hidden lg:flex items-center justify-center gap-8 h-full">
                     <div class="flex items-center space-x-6 xl:space-x-8">
@@ -388,16 +385,14 @@
         </div>
     </nav>
 
-    <!-- OTIMIZAÇÃO SEMÂNTICA: CONTEÚDO PRINCIPAL EM MAIN -->
+    <!-- OTIMIZAÇÃO: MAIN WRAPPER PARA ACESSIBILIDADE -->
     <main>
         <!-- HERO -->
         <div class="bg-hero-image w-full">
             <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
                 <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-                    <!-- H1 E DIMENSÕES -->
-                    <h1 class="mb-8">
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates - Logo" width="340" height="150" class="max-w-[340px] h-auto object-contain mx-auto">
-                    </h1>
+                    <!-- SEMÂNTICA: H1 -->
+                    <h1 class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates" class="max-w-[340px] h-auto object-contain"></h1>
                     
                     <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
                     <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
@@ -423,12 +418,14 @@
         <!-- PALESTRANTES -->
         <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-0 pb-12 px-4">
             <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
+                
                 <div class="w-full mb-12">
                     <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
                     <div class="carousel-wrapper">
-                        <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg></button>
+                        <!-- ACESSIBILIDADE: aria-label adicionado -->
+                        <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
                         <div class="carousel-viewport"><div class="carousel-track" id="track_speakers"></div></div>
-                        <button class="nav-button nav-next" id="nextBtn_speakers" aria-label="Próximo palestrante"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg></button>
+                        <button class="nav-button nav-next" id="nextBtn_speakers" aria-label="Próximo palestrante"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
                         <div class="carousel-dots" id="dotsContainer_speakers"></div>
                     </div>
                 </div>
@@ -438,9 +435,9 @@
                 <div class="w-full mb-12">
                     <p class="text-white text-xl md:text-[30px] font-light mb-8">Novidades na <span class="text-[#CA3624] font-bold">Edição 2026:</span></p>
                     <div class="carousel-wrapper news-carousel-wrapper">
-                        <button class="nav-button nav-prev" id="prevBtn_news" aria-label="Novidade anterior"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg></button>
+                        <button class="nav-button nav-prev" id="prevBtn_news" aria-label="Novidade anterior"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
                         <div class="carousel-viewport"><div class="carousel-track" id="track_news"></div></div>
-                        <button class="nav-button nav-next" id="nextBtn_news" aria-label="Próxima novidade"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg></button>
+                        <button class="nav-button nav-next" id="nextBtn_news" aria-label="Próxima novidade"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
                         <div class="carousel-dots" id="dotsContainer_news"></div>
                     </div>
                 </div>
@@ -449,7 +446,6 @@
 
                 <div class="w-full max-w-4xl mx-auto mb-24">
                     <h2 class="text-white text-2xl md:text-[30px] font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
-                    <!-- CORREÇÃO ACESSIBILIDADE: button em vez de div -->
                     <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 group" id="videoWrapper">
                         <div class="thumbnail-overlay" onclick="playVideo()">
                             <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" width="896" height="504" loading="lazy" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
@@ -467,8 +463,7 @@
                 <div class="w-full md:w-1/2 text-center md:text-left z-10 flex flex-col items-center md:items-start pl-0 md:pl-10 pb-12 md:pb-20">
                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" width="320" height="150" loading="lazy" class="w-64 md:w-80 mb-8">
                     <h3 class="text-white text-lg md:text-xl font-normal leading-snug mb-4 max-w-lg">Aprenda tudo sobre Planejamento de Aula,<br class="hidden md:block"> Comando Verbal e Sequências</h3>
-                    <!-- CORREÇÃO DE CONTRASTE: #FFD700 em vez de #FEA919 -->
-                    <p class="text-base font-light italic mb-6 opacity-90" style="color: #FFD700;">com Mariana Dias e Marcella Contursi</p>
+                    <p class="text-base font-light italic mb-6 opacity-90" style="color: #FEA919;">com Mariana Dias e Marcella Contursi</p>
                     <p class="text-white text-base md:text-lg font-bold uppercase tracking-wide mb-1">22 de maio (sexta-feira) das 9h às 12h</p>
                     <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-[30px] font-extrabold tracking-tighter">por R$147</span></div>
                     <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-global-cta shadow-xl text-sm">COMPRE SEU INGRESSO</a>
@@ -490,7 +485,7 @@
                 <!-- SEXTA-FEIRA -->
                 <div class="w-full mb-12">
                     <div class="schedule-header">SEXTA-FEIRA (22/05/2026)</div>
-                    <!-- ARIA ROLES PARA TABELAS -->
+                    <!-- ARIA ROLES -->
                     <table class="schedule-table" role="table">
                         <tbody role="rowgroup">
                             <tr role="row"><td class="time-cell" role="cell">9h00 - 12h00</td><td class="session-cell" role="cell"><div class="flex flex-col md:flex-row items-center justify-between"><div><span class="font-bold">PRÉ-JORNADA:</span> Imersão de 3h com Mariana Dias e Marcella Contursi sobre Planejamento de Aula, Comando Verbal e Sequências Reformer (adquirido a parte por R$147)</div><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-table-buy md:ml-4">COMPRAR AGORA</a></div></td></tr>
@@ -574,20 +569,20 @@
             </div>
         </section>
 
-        <!-- BENEFÍCIOS: PADDING TOP 40px FIXO, BOTTOM 0 -->
+        <!-- BENEFÍCIOS -->
         <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #BF181C;">
             <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between gap-12">
                 <div class="w-full md:w-3/5 text-left pb-16 md:pb-24 z-10">
                     <h2 class="text-2xl md:text-[30px] font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10 text-white text-sm md:text-base font-light">
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 5 Workshops para escolher;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na Jornada Business;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na abertura oficial;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Certificado de participação VOLL;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Acesso online ao material de todos os palestrantes;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Camiseta da Jornada;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 1 Workshop Extra;</div>
-                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Kit do congressista (sacochila, bloco e caneta).</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> 5 Workshops para escolher;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Entrada na Jornada Business;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Entrada na abertura oficial;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Certificado de participação VOLL;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Acesso online ao material de todos os palestrantes;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Camiseta da Jornada;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> 1 Workshop Extra;</div>
+                        <div class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"></i> Kit do congressista (sacochila, bloco e caneta).</div>
                     </div>
                     <div class="flex flex-col gap-8">
                         <div class="flex flex-col sm:flex-row gap-6">
@@ -606,7 +601,7 @@
             </div>
         </section>
 
-        <!-- HOTEL: PADDING Y 40px -->
+        <!-- HOTEL -->
         <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
             <div class="max-w-[1280px] mx-auto w-full flex flex-col md:flex-row items-start gap-12">
                 <div class="w-full md:w-1/2 text-left pl-4 md:pl-12">
@@ -620,27 +615,27 @@
             </div>
         </section>
 
-        <!-- DÚVIDAS: PADDING Y 40px -->
+        <!-- DÚVIDAS -->
         <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
             <div class="max-w-[1000px] mx-auto">
-                <h2 class="text-orange-custom text-3xl md:text-4xl font-normal mb-12 text-center">Dúvidas</h2>
+                <h2 class="text-orange-custom text-3xl md:text-[30px] font-normal mb-12 text-center">Dúvidas</h2>
                 <div class="space-y-4" id="accordion-container">
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">O QUE ESTÁ INCLUSO PELO VALOR PAGO?</span></button><div class="accordion-content text-white font-light text-base"><ul class="list-disc list-inside space-y-1 ml-2 pt-2"><li>5 Workshops;</li><li>Entrada na palestra de abertura;</li><li>Acesso online ao material de todos os palestrantes;</li><li>Kit do congressista com sacochila, bloco e caneta;</li><li>Camiseta;</li><li>Certificado de participação VOLL;</li><li>1 entrada na Jornada Business;</li><li>1 workshop extra.</li></ul></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMO EU REALIZO O PAGAMENTO DA MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode se inscrever diretamente nos botões do Menu Superior em <span class="text-[#FCB541] font-bold">AMARELO</span> do nosso site ou entrando em contato com uma de nossas consultoras pelo WhatsApp <a href="https://wa.me/5519993043657" class="text-[#FCB541] font-bold hover:underline">(19) 99304-3657</a>.</p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">TEM ESTACIONAMENTO NO LOCAL?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Sim, o hotel conta com estacionamento. Os valores podem variar de acordo com a época do ano.</p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">QUAL A FORMA DE PAGAMENTO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Cartão de crédito, boleto ou Pix.</p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A FESTA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da festa por meio deste link: <br><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/LUgYpgFonI3I3NXQT6eA</a></p></div></div>
-                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A PRÉ-JORNADA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da pré-jornada por meio deste link: <br><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/CTpCATfwPd1pRR00STRp</a></p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq1"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div id="faq1" class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq2"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div id="faq2" class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq3"><span class="text-white text-lg font-bold italic uppercase pr-8">O QUE ESTÁ INCLUSO PELO VALOR PAGO?</span></button><div id="faq3" class="accordion-content text-white font-light text-base"><ul class="list-disc list-inside space-y-1 ml-2 pt-2"><li>5 Workshops;</li><li>Entrada na palestra de abertura;</li><li>Acesso online ao material de todos os palestrantes;</li><li>Kit do congressista com sacochila, bloco e caneta;</li><li>Camiseta;</li><li>Certificado de participação VOLL;</li><li>1 entrada na Jornada Business;</li><li>1 workshop extra.</li></ul></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq4"><span class="text-white text-lg font-bold italic uppercase pr-8">COMO EU REALIZO O PAGAMENTO DA MINHA INSCRIÇÃO?</span></button><div id="faq4" class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode se inscrever diretamente nos botões do Menu Superior em <span class="text-[#FCB541] font-bold">AMARELO</span> do nosso site ou entrando em contato com uma de nossas consultoras pelo WhatsApp <a href="https://wa.me/5519993043657" class="text-[#FCB541] font-bold hover:underline">(19) 99304-3657</a>.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq5"><span class="text-white text-lg font-bold italic uppercase pr-8">TEM ESTACIONAMENTO NO LOCAL?</span></button><div id="faq5" class="accordion-content text-white font-light text-base"><p class="pt-2">Sim, o hotel conta com estacionamento. Os valores podem variar de acordo com a época do ano.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq6"><span class="text-white text-lg font-bold italic uppercase pr-8">QUAL A FORMA DE PAGAMENTO?</span></button><div id="faq6" class="accordion-content text-white font-light text-base"><p class="pt-2">Cartão de crédito, boleto ou Pix.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq7"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A FESTA. ONDE POSSO ADQUIRI-LA?</span></button><div id="faq7" class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da festa por meio deste link: <br><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/LUgYpgFonI3I3NXQT6eA</a></p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group" aria-expanded="false" aria-controls="faq8"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A PRÉ-JORNADA. ONDE POSSO ADQUIRI-LA?</span></button><div id="faq8" class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da pré-jornada por meio deste link: <br><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/CTpCATfwPd1pRR00STRp</a></p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- PATROCINADORES: PADDING Y 40px -->
+        <!-- PATROCINADORES -->
         <section class="w-full py-[40px]" style="background-color: #F7F7F7;">
             <div class="max-w-[1280px] mx-auto text-center px-4">
-                <h2 class="text-3xl md:text-4xl font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
+                <h2 class="text-3xl md:text-[30px] font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
                      <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
                      <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
@@ -650,7 +645,7 @@
         </section>
     </main>
 
-    <!-- FOOTER: PADDING Y 40px -->
+    <!-- FOOTER -->
     <footer class="w-full py-[40px] px-4 flex flex-col items-center text-center" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
          <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada" width="250" height="120" loading="lazy" class="w-48 md:w-64 opacity-100"></div>
          <a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base mb-6">COMPRE AQUI O SEU INGRESSO</a>
@@ -659,27 +654,33 @@
     <div class="w-full py-6 bg-white text-center border-t border-gray-200"><p class="text-[#340A02] text-sm font-normal">© 2014-2026 X Jornada Sul-Americana de Pilates. Todos os direitos reservados.</p></div>
 
     <!-- MODAL -->
-    <div id="speaker-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center p-4">
+    <div id="speaker-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center p-4" aria-modal="true" role="dialog">
         <div class="bg-white w-full max-w-lg rounded-2xl p-6 relative overflow-y-auto max-h-[90vh]" id="modal-body">
-            <span class="close-modal absolute top-4 right-4 text-gray-500 text-2xl font-bold cursor-pointer" onclick="closeSpeakerModal()">&times;</span>
+            <!-- Botão de fechar será inserido via JS -->
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- SCRIPT: MENU MOBILE -->
     <script>
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if(mobileBtn && mobileMenu){
             mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('open');
+                const isOpen = mobileMenu.classList.toggle('open');
+                mobileBtn.setAttribute('aria-expanded', isOpen);
             });
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('open');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
                 });
             });
         }
+    </script>
 
+    <!-- SCRIPT PRINCIPAL -->
+    <script>
+        lucide.createIcons();
         function playVideo() { 
             const wrapper = document.getElementById('videoWrapper');
             const iframeContainer = document.getElementById('iframeContainer');
@@ -689,16 +690,48 @@
             overlay.style.display = 'none';
         }
         
+        // Foco preso no modal (Focus Trap)
+        const modal = document.getElementById('speaker-modal');
+        let lastFocusedElement;
+
         function openSpeakerModal(index) {
             const speaker = speakersData[index];
-            const modal = document.getElementById('speaker-modal');
             const content = document.getElementById('modal-body');
-            content.innerHTML = `<span class="close-modal absolute top-4 right-4 text-gray-500 text-2xl font-bold cursor-pointer" onclick="closeSpeakerModal()">&times;</span><div class="text-center mt-6"><img src="${speaker.image}" alt="${speaker.name}" loading="lazy" class="w-48 h-48 object-cover rounded-full mx-auto mb-4 border-4 border-[#FCB541]"><h3 class="text-2xl font-bold text-[#CF3826] mb-4 uppercase">${speaker.name}</h3><p class="text-gray-800 text-sm leading-relaxed text-left">${speaker.text}</p></div>`;
+            lastFocusedElement = document.activeElement;
+            
+            content.innerHTML = `
+                <button aria-label="Fechar modal" class="close-modal absolute top-4 right-4 text-gray-500 text-2xl font-bold cursor-pointer outline-none focus:text-black" onclick="closeSpeakerModal()">&times;</button>
+                <div class="text-center mt-6">
+                    <img src="${speaker.image}" alt="${speaker.name}" class="w-48 h-48 object-cover rounded-full mx-auto mb-4 border-4 border-[#FCB541]">
+                    <h3 class="text-2xl font-bold text-[#CF3826] mb-4 uppercase">${speaker.name}</h3>
+                    <p class="text-gray-800 text-sm leading-relaxed text-left">${speaker.text}</p>
+                </div>
+            `;
+            
             modal.style.display = "flex";
-            document.body.style.overflow = "hidden"; 
+            document.body.style.overflow = "hidden";
+            
+            // Mover foco para o botão de fechar
+            setTimeout(() => {
+                const closeBtn = content.querySelector('.close-modal');
+                if(closeBtn) closeBtn.focus();
+            }, 100);
         }
-        function closeSpeakerModal() { const modal = document.getElementById('speaker-modal'); modal.style.display = "none"; document.body.style.overflow = "auto"; }
-        window.onclick = function(event) { const modal = document.getElementById('speaker-modal'); if (event.target == modal) { closeSpeakerModal(); } }
+
+        function closeSpeakerModal() { 
+            modal.style.display = "none"; 
+            document.body.style.overflow = "auto";
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        window.onclick = function(event) { if (event.target == modal) { closeSpeakerModal(); } }
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && modal.style.display === "flex") {
+                closeSpeakerModal();
+            }
+        });
 
         const speakersData = [{name: "MARIANA DIAS", text: "Mari Dias é um dos grandes talentos que o Brasil possui atualmente. Ela é criadora da Metodologia Pilates Construtivo, sócia-proprietária do Instituto VOLL e vencedora do Prêmio Contrology 2023. Fisioterapia pela Universidade Estadual de Londrina – UEL, pós-graduada em Fisioterapia Aplicada em Traumato-Ortopedia e Esportiva. Mari viaja o Brasil e exterior ensinando sua metodologia de trabalho e é parte integrante do Pilates Trip – uma comunidade que roda o mundo mostrando as diferentes vertentes do Pilates.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_mariana.webp"}, {name: "JULIANA RENÓ", text: "Fisioterapeuta formada em 2005, pós-graduada em Dermato Funcional e instrutora de Pilates desde 2010. Proprietária do Renó Pilates Studio onde atende presencialmente e gerencia uma equipe referência na sua cidade. Possui duas formações em Pilates e diversos cursos de aprimoramento como Pilates avançado, MAT Pilates, Metodologia Flowwheel, Smart Foundations 1, Pilates na gravidez, entre outros. É mentora e treinadora de profissionais do Pilates de forma on-line e presencial.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_juliana.webp"}, {name: "THALYSSA LARANGEIRAS", text: "Fisioterapeuta, especialista em Dermato Funcional e instrutora de Pilates desde 2011. Possui formação no Método Pilates, MAT Pilates Avançado com acessórios, Aeropilates, alongamento consciente, Ballness, Slide Board e Board Pilates. É também sócia proprietária da Clínica LIFE – PILATES, ESTÉTICA e RPG.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_thalyssa.webp"}, {name: "MARCELLA CONTURSI", text: "Bailarina clássica, fisioterapeuta, pós-graduada em Pilates e a prescrição do exercício físico. Atua no Método Pilates desde 2011, ministra cursos para profissionais desde 2014 e é proprietária do Studio Pilates Marcella Contursi em Santos/SP.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_marcella.webp"}, {name: "MARLON BLUNER", text: "Fisioterapeuta, pós-graduado em Fisioterapia Respiratória; MBA em Pilates, Gestão e Marketing; Atuação no Método Pilates desde 2008; Em formação na APLC (Authentic Pilates Learning Center); sócio-proprietário dos Studios: Corps Center e Espaço Saluti; Criador do curso MRC (Macro Reabilitação da Coluna).", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_marlon.webp"}, {name: "NANY SEVILLA", text: "Nany Sevilla tem 60 anos e é Health Coach pelo Institute for Integrative Nutrition com mais de 30 anos de experiência como professora de Pilates e Fitness em vários países da América Latina e do Caribe. É Co-proprietária da OrangeTheory Fitness na Costa Rica, embaixadora da REEBOK para a América Latina, apresentadora de programas de fitness para televisão e rádio (Teletica), além de colunista de diversos jornais e revistas de saúde. Sua especialidade é o Mat Pilates focado em emagrecimento e hipertrofia.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_nany.webp"}, {name: "ELIANA TELLERIA", text: "Formada em Pilates na Europa e EUA – PMA Certified – CPT (Professora Certificada de Pilates PMA), Formada em MAT Pilates pela STOTT PILATES, Formada em Pilates pela POWER PILATES; Formada em Pilates pela BASI PILATES. Coordenadora responsável pela Pilates Wellness and Energy. Reconhecida por sua criatividade em Pilates, atua com o Método Contemporâneo baseado no Pilates Clássico.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_eliane.webp"}, {name: "KEYNER LUIZ", text: "Criador do MIT (Movimento Inteligente), Instrutor de Pilates e de Treinamento Funcional. Fisioterapeuta formado pela UNISANTA, com Pós-graduação em Fisiologia do Exercício pela CEFE. Além disso, possui formação em MAT Pilates, Pilates Studio, Pilates Fisioterapêutico e Pilates Clássico. Ministra palestras e workshops nos maiores eventos da América Latina.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/palestrante_keyner.webp"}, {name: "QUEILA FLORÊNCIO", text: "Graduada em Educação Física (Faculdade de Educação Física ACM Sorocaba) – International Coalition of YMCA University. Pós-graduada em Exercício Físico Aplicado à Reabilitação e Grupos Especiais e em Neurociência, Psicologia Positiva e Mindfullness – PUC-PR. Possui certificação Internacional de 3ª Geração de Joseph H. Pilates (Authentic Pilates Learning Center) – Pilates Clássico. Docente do Curso Pós-Graduação e Extensão pela Faculdade FMU. Palestrante na área de Pilates, desenvolvimento pessoal e mindset. Proprietária do Florence Boutique Pilates Clássico e StudioQ Pilates & Training.", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/queli_jornada.webp"}, {name: "CAROLINA RORATO", text: "Sócia da VOLL, fisioterapeuta, CEO da Campara Wellness Center e fundadora da Reuse Fashion", image: "https://jornadapilates.com.br/wp-content/uploads/2025/11/carolrorato.webp"}];
 
@@ -721,10 +754,8 @@
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 if(type==='speaker') {
-                    // ADICIONADO LOADING LAZY E WIDTH/HEIGHT
                     slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center w-full px-14 md:px-0"><img src="${item.image}" alt="${item.name}" width="224" height="224" loading="lazy" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-[20px] uppercase leading-tight md:text-[30px]">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block md:text-[18px]">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
                 } else if (type === 'news') {
-                    // ADICIONADO LOADING LAZY E WIDTH/HEIGHT
                     slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" width="500" height="350" loading="lazy" style="pointer-events: none;"></div></div>`; 
                 }
                 track.appendChild(slide);
@@ -764,7 +795,6 @@
 
             track.addEventListener('touchmove', (e) => {
                 if (!isDragging || isNewsMobile()) return;
-                // Optional: Visual feedback during drag could go here
             });
 
             track.addEventListener('touchend', (e) => {
@@ -790,11 +820,22 @@
         if(secondItem) { secondItem.classList.add('open'); secondItem.style.maxHeight = secondItem.scrollHeight + "px"; }
 
         document.querySelectorAll('.accordion-header').forEach(button => {
+            button.setAttribute('aria-expanded', 'false');
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;
                 const isOpen = content.classList.contains('open');
-                document.querySelectorAll('.accordion-content').forEach(c => { c.style.maxHeight = null; c.classList.remove('open'); });
-                if (!isOpen) { content.classList.add('open'); content.style.maxHeight = content.scrollHeight + "px"; }
+                
+                document.querySelectorAll('.accordion-content').forEach(c => { 
+                    c.style.maxHeight = null; 
+                    c.classList.remove('open'); 
+                    c.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+                
+                if (!isOpen) { 
+                    content.classList.add('open'); 
+                    content.style.maxHeight = content.scrollHeight + "px"; 
+                    button.setAttribute('aria-expanded', 'true');
+                }
             });
         });
     </script>
