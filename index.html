@@ -6,14 +6,12 @@
     <meta name="description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS, uma das mais belas cidades do Brasil.">
     <title>Jornada Sul-Americana de Pilates</title>
     
-    <!-- OTIMIZAÇÃO: Preload da imagem principal para carregar instantaneamente -->
+    <!-- OTIMIZAÇÃO: Preload da imagem principal para carregar instantaneamente (LCP) -->
     <link rel="preload" as="image" href="https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- OTIMIZAÇÃO: Removida a biblioteca Lucide externa para reduzir peso. Ícones agora são SVG inline. -->
-
     <style>
         body {
             margin: 0;
@@ -140,6 +138,26 @@
             background-color: #e5a030 !important;
             transform: translateX(-50%) scale(1.05) !important; 
         }
+        
+        /* Botão da Tabela */
+        .btn-table-buy {
+            background-color: #FCB541 !important;
+            color: #340A02 !important;
+            font-weight: 500 !important; 
+            text-transform: uppercase; 
+            font-size: 12px;
+            white-space: nowrap;
+            border: none !important;
+            padding: 0px 15px; 
+            height: 32px; 
+            line-height: 32px;
+            border-radius: 4px; 
+            display: inline-block; 
+            margin-top: 10px; 
+            transition: transform 0.2s; 
+            cursor: pointer;
+        }
+        .btn-table-buy:hover { transform: scale(1.05); opacity: 0.9; }
 
         /* CARDS */
         .feature-card {
@@ -221,10 +239,12 @@
         /* VÍDEO */
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; background-color: black; border-radius: 8px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        /* CORREÇÃO ACESSIBILIDADE: Alterado para button no HTML, mantido estilo */
         .play-button {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px;
             background-color: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: transform 0.2s, background-color 0.2s; z-index: 10;
+            border: none; outline: none;
         }
         .play-button:hover { transform: translate(-50%, -50%) scale(1.1); background-color: red; }
         .thumbnail-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 5; }
@@ -332,7 +352,6 @@
         <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 h-full">
             <div class="flex items-center justify-between lg:justify-center w-full h-full">
                 <div class="lg:hidden w-full flex justify-end items-center">
-                    <!-- OTIMIZAÇÃO: aria-label adicionado e ícone SVG inline -->
                     <button id="mobile-menu-btn" aria-label="Abrir menu principal" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                     </button>
@@ -369,298 +388,271 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <div class="bg-hero-image w-full">
-        <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
+    <!-- OTIMIZAÇÃO SEMÂNTICA: CONTEÚDO PRINCIPAL EM MAIN -->
+    <main>
+        <!-- HERO -->
+        <div class="bg-hero-image w-full">
+            <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
+                <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
+                    <!-- H1 E DIMENSÕES -->
+                    <h1 class="mb-8">
+                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates - Logo" width="340" height="150" class="max-w-[340px] h-auto object-contain mx-auto">
+                    </h1>
+                    
+                    <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
+                    <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
+                    
+                    <div class="mb-8"><a href="#" class="btn-hero-lg shadow-xl">QUERO PARTICIPAR!</a></div>
+
+                    <h2 class="text-orange-custom text-2xl md:text-[30px] font-normal mb-8">O que esperar da X Jornada?</h2>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[980px] mx-auto mb-12">
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Workshops de qualidade</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Contato direto com 17 palestrantes renomados</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Networking com todo o Brasil</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Jornada Business</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Material Didático</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Temas variados para todas as vertentes</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p></div>
+                        <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">600 Congressistas<br>de todo o Brasil</p></div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- PALESTRANTES -->
+        <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-0 pb-12 px-4">
             <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-                <!-- OTIMIZAÇÃO: H1 e dimensões na imagem -->
-                <h1 class="mb-8">
-                    <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates - Logo" width="340" height="150" class="max-w-[340px] h-auto object-contain mx-auto">
-                </h1>
-                
-                <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
-                <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
-                
-                <div class="mb-8"><a href="#" class="btn-hero-lg shadow-xl">QUERO PARTICIPAR!</a></div>
-
-                <h2 class="text-orange-custom text-2xl md:text-[30px] font-normal mb-8">O que esperar da X Jornada?</h2>
-
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[980px] mx-auto mb-12">
-                    <!-- OTIMIZAÇÃO: Ícones com dimensões e loading lazy -->
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/training.webp" alt="Ícone Workshops de qualidade" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Workshops de qualidade</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/networking-2.webp" alt="Ícone Contato Direto" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Contato direto com 17 palestrantes renomados</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/chat-2.webp" alt="Ícone Networking" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Networking com todo o Brasil</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/star-2.webp" alt="Ícone Jornada Business" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Jornada Business</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/open-book-2.webp" alt="Ícone Material Didático" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Material Didático</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/leadership.webp" alt="Ícone Temas Variados" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Temas variados para todas as vertentes</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/theater-mask.webp" alt="Ícone Festa à Fantasia" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">Festa à Fantasia<br>+ Banda<br>+ Open Bar</p></div>
-                    <div class="feature-card"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/crowd-of-users.webp" alt="Ícone Congressistas" width="60" height="60" loading="lazy" class="w-[60px] h-[60px] icon-white object-contain mb-4"><p class="text-white text-[18px] leading-tight">600 Congressistas<br>de todo o Brasil</p></div>
-                </div>
-            </div>
-        </header>
-    </div>
-
-    <!-- PALESTRANTES -->
-    <section class="bg-solid-dark w-full flex flex-col items-center justify-center pt-0 pb-12 px-4">
-        <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-            
-            <div class="w-full mb-12">
-                <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
-                <div class="carousel-wrapper">
-                    <!-- OTIMIZAÇÃO: aria-label e ícones SVG inline -->
-                    <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <div class="carousel-viewport"><div class="carousel-track" id="track_speakers"></div></div>
-                    <button class="nav-button nav-next" id="nextBtn_speakers" aria-label="Próximo palestrante">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
-                    <div class="carousel-dots" id="dotsContainer_speakers"></div>
-                </div>
-            </div>
-
-            <div class="mb-12"><a href="#" class="btn-global-cta shadow-xl mb-8">GARANTA JÁ A SUA VAGA</a></div>
-
-            <div class="w-full mb-12">
-                <p class="text-white text-xl md:text-[30px] font-light mb-8">Novidades na <span class="text-[#CA3624] font-bold">Edição 2026:</span></p>
-                <div class="carousel-wrapper news-carousel-wrapper">
-                    <button class="nav-button nav-prev" id="prevBtn_news" aria-label="Novidade anterior">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <div class="carousel-viewport"><div class="carousel-track" id="track_news"></div></div>
-                    <button class="nav-button nav-next" id="nextBtn_news" aria-label="Próxima novidade">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
-                    <div class="carousel-dots" id="dotsContainer_news"></div>
-                </div>
-            </div>
-
-            <div class="mb-16"><a href="#" class="btn-global-cta shadow-xl">COMPRE SEU INGRESSO</a></div>
-
-            <div class="w-full max-w-4xl mx-auto mb-24">
-                <h2 class="text-white text-2xl md:text-[30px] font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 group" id="videoWrapper">
-                    <div class="thumbnail-overlay" onclick="playVideo()">
-                        <!-- OTIMIZAÇÃO: loading lazy e dimensões -->
-                        <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" width="896" height="504" loading="lazy" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                        <div class="play-button" aria-label="Reproduzir vídeo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                <div class="w-full mb-12">
+                    <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
+                    <div class="carousel-wrapper">
+                        <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg></button>
+                        <div class="carousel-viewport"><div class="carousel-track" id="track_speakers"></div></div>
+                        <button class="nav-button nav-next" id="nextBtn_speakers" aria-label="Próximo palestrante"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg></button>
+                        <div class="carousel-dots" id="dotsContainer_speakers"></div>
                     </div>
-                    <div class="video-container" id="iframeContainer"></div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PRÉ-JORNADA -->
-    <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #C01B1C;">
-        <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between">
-            <div class="w-full md:w-1/2 text-center md:text-left z-10 flex flex-col items-center md:items-start pl-0 md:pl-10 pb-12 md:pb-20">
-                <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" width="320" height="150" loading="lazy" class="w-64 md:w-80 mb-8">
-                <h3 class="text-white text-lg md:text-xl font-normal leading-snug mb-4 max-w-lg">Aprenda tudo sobre Planejamento de Aula,<br class="hidden md:block"> Comando Verbal e Sequências</h3>
-                <p class="text-base font-light italic mb-6 opacity-90" style="color: #FEA919;">com Mariana Dias e Marcella Contursi</p>
-                <p class="text-white text-base md:text-lg font-bold uppercase tracking-wide mb-1">22 de maio (sexta-feira) das 9h às 12h</p>
-                <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-[30px] font-extrabold tracking-tighter">por R$147</span></div>
-                <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-global-cta shadow-xl text-sm">COMPRE SEU INGRESSO</a>
-            </div>
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto.webp" alt="Mariana Dias e Marcella Contursi" width="600" height="500" loading="lazy" class="w-full max-w-[500px] xl:max-w-[650px] h-auto object-contain block">
-            </div>
-        </div>
-    </section>
+                <div class="mb-12"><a href="#" class="btn-global-cta shadow-xl mb-8">GARANTA JÁ A SUA VAGA</a></div>
 
-    <!-- PROGRAMAÇÃO -->
-    <section class="w-full pt-[40px] pb-[1px] px-4 bg-white">
-        <div class="max-w-[1280px] mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-[30px] font-bold uppercase mb-2" style="color: #2F0602;">Programação Completa:</h2>
-                <p class="text-lg font-light italic" style="color: #2F0602;">Programação sujeita à alterações</p>
-            </div>
-
-            <!-- SEXTA-FEIRA -->
-            <div class="w-full mb-12">
-                <div class="schedule-header">SEXTA-FEIRA (22/05/2026)</div>
-                <table class="schedule-table">
-                    <tr><td class="time-cell">9h00 - 12h00</td><td class="session-cell"><div class="flex flex-col md:flex-row items-center justify-between"><div><span class="font-bold">PRÉ-JORNADA:</span> Imersão de 3h com Mariana Dias e Marcella Contursi sobre Planejamento de Aula, Comando Verbal e Sequências Reformer (adquirido a parte por R$147)</div><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-table-buy md:ml-4">COMPRAR AGORA</a></div></td></tr>
-                    <tr><td class="time-cell">13h00 - 15h00</td><td class="session-cell"><span class="font-bold">JORNADA BUSINESS com Ana Lameu, Keyner Luiz e Felipe Scher:</span> Palestra, Mesa-Redonda e Tira-dúvidas 100% voltado para você crescer seu Studio e faturar mais.</td></tr>
-                    <tr><td class="time-cell">16h00 - 16h30</td><td class="session-cell text-center font-bold">ABERTURA DA X JORNADA SUL-AMERICANA DE PILATES 2026</td></tr>
-                    <tr><td class="time-cell">17h00 - 19h00</td><td class="content-cell"><div class="simultaneous-grid">
-                        <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Construindo as extensões no Ladder Barrel</p><span class="room-tag">SALA TEATRO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Next Level Pilates - Movimentos avançados para aumento da massa muscular.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Variações no Reformer (Sequências criativas com fundamentos clássicos)</p><span class="room-tag">SALA REFORMER</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Daiane Dieter:</strong> O passo a passo para construir aulas de pilates que encantam e fidelizam seus alunos</p><span class="room-tag">AUDITÓRIO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Como construir exercícios avançados no Cadillac e aplicar nas suas aulas</p><span class="room-tag">SALA CADILLAC</span></div>
-                    </div></td></tr>
-                    <tr>
-                        <td class="time-cell">
-                            19h00 - 20h30
-                            <span style="display: block; margin-top: 5px; color: #BA1C1D; font-weight: 700; text-transform: uppercase; font-size: 10px; line-height: 1.2; white-space: normal;">
-                                WORKSHOPS EXTRAS
-                            </span>
-                        </td>
-                        <td class="content-cell"><div class="simultaneous-grid">
-                            <div class="event-item"><p class="event-text"><strong>Especial Mariana Dias & Marcella Contursi:</strong> Como você pode construir uma imagem de autoridade e sucesso real dentro do Pilates, indo além da técnica — com posicionamento, consistência e verdade. Mariana e Marcella mostram os bastidores do seu Instagram.</p><span class="room-tag">SALA TEATRO</span></div>
-                            <div class="event-item"><p class="event-text"><strong>Especial Felipe Scher:</strong> A Precificação no Pilates - Como aumentar seu lucro e parar de perder dinheiro</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                            <div class="event-item"><p class="event-text"><strong>Especial Carolina Rorato:</strong> VOCÊ É A SUA MELHOR MARCA: liderança, presença e propósito no Pilates</p><span class="room-tag">SALA REFORMER</span></div>
-                            <div class="event-item"><p class="event-text"><strong>Especial Ana Lameu:</strong> Como ter um Studio de Rica</p><span class="room-tag">AUDITÓRIO</span></div>
-                            <div class="event-item"><p class="event-text"><strong>Especial com Keyner Luiz:</strong> Criação de Renda Extra para Studios de Pilates</p><span class="room-tag">SALA CADILLAC</span></div>
-                        </div></td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- SÁBADO -->
-            <div class="w-full mb-12">
-                <div class="schedule-header">SÁBADO (23/05/2026)</div>
-                <table class="schedule-table">
-                    <tr><td class="time-cell">8h00 - 10h00</td><td class="content-cell"><div class="simultaneous-grid">
-                        <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Biomecânica Aplicada ao Método Pilates</p><span class="room-tag">SALA TEATRO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Moves that Burn & Legs and Glutes.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Reformer Clássico - Nível Intermediário - Aquilo que nunca te contaram</p><span class="room-tag">SALA REFORMER</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Renatha Cruz:</strong> Raciocínio Clínico e Ativação Muscular: Da Avaliação à Transformação</p><span class="room-tag">AUDITÓRIO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Articulación Secuencial de la columna y estabilidad pelvica en Cadillac.</p><span class="room-tag">SALA CADILLAC</span></div>
-                    </div></td></tr>
-                    <tr><td class="time-cell">10h30 - 12h30</td><td class="content-cell"><div class="simultaneous-grid">
-                        <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Como acrescentar o Mat Pilates suas aulas com aparelhos</p><span class="room-tag">SALA TEATRO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> MAT + OVERBALL: Como acrescentar a overball com estratégia nas suas aulas de MAT PILATES</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Mariana Dias:</strong> Como trazer consciência corporal no Reformer</p><span class="room-tag">SALA REFORMER</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Vitoria Scapinello:</strong> Avaliação que converte</p><span class="room-tag">AUDITÓRIO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Cadillac - Conectando o Power House Através das molas</p><span class="room-tag">SALA CADILLAC</span></div>
-                    </div></td></tr>
-                    <tr>
-                        <td class="time-cell" style="padding: 4px; line-height: 1.2;">12h30 - 14h30</td>
-                        <td class="session-cell text-center font-normal" style="text-align: center; padding: 4px;">INTERVALO</td>
-                    </tr>
-                    <tr><td class="time-cell">14h30 - 16h30</td><td class="content-cell"><div class="simultaneous-grid">
-                        <div class="event-item"><p class="event-text"><strong>Marcilene Ferrer:</strong> O Poder dos Acessórios no atendimento à neurodivergente</p><span class="room-tag">SALA TEATRO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Next Level Pilates. Movimentos avançados para aumento da massa muscular.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Reformer: como estruturar uma aula da Base ao Avançado com Clareza e Segurança</p><span class="room-tag">SALA REFORMER</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Biomecânica Aplicada ao Método Pilates</p><span class="room-tag">AUDITÓRIO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Queila Florêncio:</strong> Construções Inteligentes no Cadillac</p><span class="room-tag">SALA CADILLAC</span></div>
-                    </div></td></tr>
-                    <tr>
-                        <td class="time-cell">
-                            16h45 - 17h30
-                            <span style="display: block; margin-top: 5px; color: #BA1C1D; font-weight: 700; text-transform: uppercase; font-size: 10px; line-height: 1.2; white-space: normal;">
-                                MASTER CLASS GRATUITA PARA OS PRIMEIROS INSCRITOS
-                            </span>
-                        </td>
-                        <td class="content-cell"><div class="simultaneous-grid">
-                            <div class="event-item"><p class="event-text">Master Class Prática Keyner Luiz</p><span class="room-tag">SALA TEATRO</span></div>
-                            <div class="event-item"><p class="event-text">Master Class Prática com Nany Sevilla MAT CORE ON FIRE</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                            <div class="event-item"><p class="event-text">Master Class Prática com Mariana Dias- Sequencia de box no Reformer</p><span class="room-tag">SALA REFORMER</span></div>
-                            <div class="event-item"><p class="event-text">Master Class Prática com Marlon Bluner - MAT Básico - Como fazer suas adaptações e evoluir o aluno</p><span class="room-tag">AUDITÓRIO</span></div>
-                            <div class="event-item"><p class="event-text">Master Class Prática com Thalyssa Larangeiras Construindo sequências do básico ao avançado no Cadillac</p><span class="room-tag">SALA CADILLAC</span></div>
-                        </div></td>
-                    </tr>
-                    <tr><td class="time-cell">20h00 - 00h00</td><td class="session-cell" style="background-color: #CD4446; color: white;"><div class="flex flex-col md:flex-row items-center justify-center text-center gap-3"><div><span style="color: #FFC001; font-weight: 800; font-size: 16px;">FESTA A FANTASIA + BANDA + OPEN BAR:</span> <span style="color: #FFFFFF;">(ingresso adquirido a parte por R$149) - Limitado a apenas 300 convites - 100% do valor da Festa é revertido para você usar em Cursos Online VOLL.</span></div><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-table-buy" style="margin: 0;">COMPRAR AGORA</a></div></td></tr>
-                </table>
-            </div>
-
-            <!-- DOMINGO -->
-            <div class="w-full mb-12">
-                <div class="schedule-header">DOMINGO (24/05/2026)</div>
-                <table class="schedule-table">
-                    <tr><td class="time-cell">9h00 - 11h00</td><td class="content-cell"><div class="simultaneous-grid">
-                        <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> MAT 34 nos equipamentos</p><span class="room-tag">SALA TEATRO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Mat Flow. Secuencias fluidas en Mat para fluir en los movimientos. Adicionar y entrelazar secuencias.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Marcella Contursi:</strong> O poder do Reformer no ganho de flexibilidade para alcançar exercícios avançados</p><span class="room-tag">SALA REFORMER</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Tatiane Abreu:</strong> 6 Pilares da Conexão no Pilates</p><span class="room-tag">AUDITÓRIO</span></div>
-                        <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Como construir exercícios avançados no Cadillac e aplicar nas suas aulas</p><span class="room-tag">SALA CADILLAC</span></div>
-                    </div></td></tr>
-                    <tr><td class="time-cell">11h30 - 12h00</td><td class="session-cell text-center font-bold" style="text-align: center;">ENCERRAMENTO DA JORNADA</td></tr>
-                </table>
-            </div>
-
-            <div class="text-center mt-12 mb-12"><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base">GARANTA JÁ A SUA VAGA</a></div>
-        </div>
-    </section>
-
-    <!-- BENEFÍCIOS: PADDING TOP 40px FIXO, BOTTOM 0 -->
-    <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #BF181C;">
-        <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between gap-12">
-            <div class="w-full md:w-3/5 text-left pb-16 md:pb-24 z-10">
-                <!-- CORREÇÃO: Cor alterada para #2F0602 -->
-                <h2 class="text-2xl md:text-[30px] font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10 text-white text-sm md:text-base font-light">
-                    <!-- OTIMIZAÇÃO: Ícone check SVG inline -->
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 5 Workshops para escolher;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na Jornada Business;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na abertura oficial;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Certificado de participação VOLL;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Acesso online ao material de todos os palestrantes;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Camiseta da Jornada;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 1 Workshop Extra;</div>
-                    <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Kit do congressista (sacochila, bloco e caneta).</div>
-                </div>
-                <div class="flex flex-col gap-8">
-                    <div class="flex flex-col sm:flex-row gap-6">
-                        <div class="payment-card"><span class="text-black font-bold text-base uppercase">Cartão de crédito</span><a href="https://jornadapilates.com.br/pagamento-cartao-credito/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
-                        <div class="payment-card"><span class="text-black font-bold text-base uppercase">Boleto Bancário</span><a href="https://jornadapilates.com.br/pagamento-boleto/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
+                <div class="w-full mb-12">
+                    <p class="text-white text-xl md:text-[30px] font-light mb-8">Novidades na <span class="text-[#CA3624] font-bold">Edição 2026:</span></p>
+                    <div class="carousel-wrapper news-carousel-wrapper">
+                        <button class="nav-button nav-prev" id="prevBtn_news" aria-label="Novidade anterior"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg></button>
+                        <div class="carousel-viewport"><div class="carousel-track" id="track_news"></div></div>
+                        <button class="nav-button nav-next" id="nextBtn_news" aria-label="Próxima novidade"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m9 18 6-6-6-6"/></svg></button>
+                        <div class="carousel-dots" id="dotsContainer_news"></div>
                     </div>
-                    <div class="bg-[#D59126] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full shadow-lg relative">
-                        <div class="text-center md:text-left"><span class="block text-white font-extrabold text-xl uppercase mb-1">MELHOR OFERTA!</span><span class="block text-[#2F0602] font-semibold text-sm">Desconto especial para pagamento à vista via PIX</span></div>
-                        <!-- BOTÃO CORRIGIDO: Altura automática com padding seguro para não vazar texto -->
-                        <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 py-3 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;">
-                            CLIQUE AQUI
-                        </a>
+                </div>
+
+                <div class="mb-16"><a href="#" class="btn-global-cta shadow-xl">COMPRE SEU INGRESSO</a></div>
+
+                <div class="w-full max-w-4xl mx-auto mb-24">
+                    <h2 class="text-white text-2xl md:text-[30px] font-light mb-8 uppercase">VEJA COMO FOI A JORNADA 2025</h2>
+                    <!-- CORREÇÃO ACESSIBILIDADE: button em vez de div -->
+                    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 group" id="videoWrapper">
+                        <div class="thumbnail-overlay" onclick="playVideo()">
+                            <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/thumb.webp" alt="Thumbnail do vídeo da Jornada 2025" width="896" height="504" loading="lazy" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                            <button class="play-button" aria-label="Reproduzir vídeo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+                        </div>
+                        <div class="video-container" id="iframeContainer"></div>
                     </div>
                 </div>
             </div>
-            <!-- CORREÇÃO: REMOVIDA MARGEM NEGATIVA PARA EVITAR LEAK -->
-            <div class="w-full md:w-2/5 flex justify-center md:justify-end mt-0"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto-1.webp" alt="Participante" width="600" height="500" loading="lazy" class="w-full max-w-[400px] xl:max-w-[500px] h-auto object-contain block"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- HOTEL: PADDING Y 40px -->
-    <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
-        <div class="max-w-[1280px] mx-auto w-full flex flex-col md:flex-row items-start gap-12">
-            <div class="w-full md:w-1/2 text-left pl-4 md:pl-12">
-                <h2 class="text-3xl md:text-[30px] font-normal mb-6"><span class="text-white">Hotel</span> <span class="text-[#CF3826] font-bold">Wish Serrano Resort</span></h2>
-                <p class="text-white text-lg font-bold italic mb-6">Wish Serrano Resort: elegância, conforto e experiências inesquecíveis em Gramado!</p>
-                <p class="text-white text-base font-light leading-relaxed mb-8 opacity-90">Localizado no coração de Gramado, o Wish Serrano foi eleito um dos Top5 melhores hotéis de Gramado e é um verdadeiro símbolo da hotelaria de alto padrão no Sul do Brasil. Em meio às paisagens encantadoras da Serra Gaúcha, o resort oferece uma experiência única de hospitalidade, reunindo sofisticação, aconchego e bem-estar para quem busca dias de descanso com charme e tranquilidade.</p>
-                <p class="text-white text-sm font-light mb-4">Congressista tem desconto para se hospedar:</p>
-                <!-- BOTÃO 5 - HOTEL: Usando btn-global-cta -->
-                <a href="https://eventos.grupowish.com/vollpilates2026" target="_blank" class="btn-global-cta shadow-xl text-sm">FAÇA SUA HOSPEDAGEM</a>
+        <!-- PRÉ-JORNADA -->
+        <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #C01B1C;">
+            <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between">
+                <div class="w-full md:w-1/2 text-center md:text-left z-10 flex flex-col items-center md:items-start pl-0 md:pl-10 pb-12 md:pb-20">
+                    <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1.webp" alt="Logo Pré-Jornada Sul-Americana de Pilates" width="320" height="150" loading="lazy" class="w-64 md:w-80 mb-8">
+                    <h3 class="text-white text-lg md:text-xl font-normal leading-snug mb-4 max-w-lg">Aprenda tudo sobre Planejamento de Aula,<br class="hidden md:block"> Comando Verbal e Sequências</h3>
+                    <!-- CORREÇÃO DE CONTRASTE: #FFD700 em vez de #FEA919 -->
+                    <p class="text-base font-light italic mb-6 opacity-90" style="color: #FFD700;">com Mariana Dias e Marcella Contursi</p>
+                    <p class="text-white text-base md:text-lg font-bold uppercase tracking-wide mb-1">22 de maio (sexta-feira) das 9h às 12h</p>
+                    <div class="flex items-baseline gap-2 mb-8"><span class="text-[#FCB541] text-3xl md:text-[30px] font-extrabold tracking-tighter">por R$147</span></div>
+                    <a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-global-cta shadow-xl text-sm">COMPRE SEU INGRESSO</a>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto.webp" alt="Mariana Dias e Marcella Contursi" width="600" height="500" loading="lazy" class="w-full max-w-[500px] xl:max-w-[650px] h-auto object-contain block">
+                </div>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Fotohotel.webp" class="w-full max-w-[450px] md:max-w-[500px] h-auto object-cover rounded-lg shadow-2xl" loading="lazy" alt="Hotel Wish Serrano" width="500" height="300"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DÚVIDAS: PADDING Y 40px (BORDA SUPERIOR REMOVIDA AQUI TAMBÉM) -->
-    <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
-        <div class="max-w-[1000px] mx-auto">
-            <h2 class="text-orange-custom text-3xl md:text-[30px] font-normal mb-12 text-center">Dúvidas</h2>
-            <div class="space-y-4" id="accordion-container">
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">O QUE ESTÁ INCLUSO PELO VALOR PAGO?</span></button><div class="accordion-content text-white font-light text-base"><ul class="list-disc list-inside space-y-1 ml-2 pt-2"><li>5 Workshops;</li><li>Entrada na palestra de abertura;</li><li>Acesso online ao material de todos os palestrantes;</li><li>Kit do congressista com sacochila, bloco e caneta;</li><li>Camiseta;</li><li>Certificado de participação VOLL;</li><li>1 entrada na Jornada Business;</li><li>1 workshop extra.</li></ul></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMO EU REALIZO O PAGAMENTO DA MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode se inscrever diretamente nos botões do Menu Superior em <span class="text-[#FCB541] font-bold">AMARELO</span> do nosso site ou entrando em contato com uma de nossas consultoras pelo WhatsApp <a href="https://wa.me/5519993043657" class="text-[#FCB541] font-bold hover:underline">(19) 99304-3657</a>.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">TEM ESTACIONAMENTO NO LOCAL?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Sim, o hotel conta com estacionamento. Os valores podem variar de acordo com a época do ano.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">QUAL A FORMA DE PAGAMENTO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Cartão de crédito, boleto ou Pix.</p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A FESTA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da festa por meio deste link: <br><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/LUgYpgFonI3I3NXQT6eA</a></p></div></div>
-                <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A PRÉ-JORNADA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da pré-jornada por meio deste link: <br><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/CTpCATfwPd1pRR00STRp</a></p></div></div>
-            </div>
-        </div>
-    </section>
+        <!-- PROGRAMAÇÃO -->
+        <section class="w-full pt-[40px] pb-[1px] px-4 bg-white">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-[30px] font-bold uppercase mb-2" style="color: #2F0602;">Programação Completa:</h2>
+                    <p class="text-lg font-light italic" style="color: #2F0602;">Programação sujeita à alterações</p>
+                </div>
 
-    <!-- PATROCINADORES: PADDING Y 40px -->
-    <section class="w-full py-[40px]" style="background-color: #F7F7F7;">
-        <div class="max-w-[1280px] mx-auto text-center px-4">
-            <h2 class="text-3xl md:text-[30px] font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                 <!-- LAZY LOADING E DIMENSÕES -->
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
-                 <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" width="120" height="60" loading="lazy" class="h-auto w-auto max-w-[100px] md:max-w-[120px] max-h-[60px] object-contain">
+                <!-- SEXTA-FEIRA -->
+                <div class="w-full mb-12">
+                    <div class="schedule-header">SEXTA-FEIRA (22/05/2026)</div>
+                    <!-- ARIA ROLES PARA TABELAS -->
+                    <table class="schedule-table" role="table">
+                        <tbody role="rowgroup">
+                            <tr role="row"><td class="time-cell" role="cell">9h00 - 12h00</td><td class="session-cell" role="cell"><div class="flex flex-col md:flex-row items-center justify-between"><div><span class="font-bold">PRÉ-JORNADA:</span> Imersão de 3h com Mariana Dias e Marcella Contursi sobre Planejamento de Aula, Comando Verbal e Sequências Reformer (adquirido a parte por R$147)</div><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="btn-table-buy md:ml-4">COMPRAR AGORA</a></div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">13h00 - 15h00</td><td class="session-cell" role="cell"><span class="font-bold">JORNADA BUSINESS com Ana Lameu, Keyner Luiz e Felipe Scher:</span> Palestra, Mesa-Redonda e Tira-dúvidas 100% voltado para você crescer seu Studio e faturar mais.</td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">16h00 - 16h30</td><td class="session-cell text-center font-bold" role="cell">ABERTURA DA X JORNADA SUL-AMERICANA DE PILATES 2026</td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">17h00 - 19h00</td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Construindo as extensões no Ladder Barrel</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Next Level Pilates - Movimentos avançados para aumento da massa muscular.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Variações no Reformer (Sequências criativas com fundamentos clássicos)</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Daiane Dieter:</strong> O passo a passo para construir aulas de pilates que encantam e fidelizam seus alunos</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Como construir exercícios avançados no Cadillac e aplicar nas suas aulas</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">19h00 - 20h30<span style="display: block; margin-top: 5px; color: #BA1C1D; font-weight: 700; text-transform: uppercase; font-size: 10px; line-height: 1.2; white-space: normal;">WORKSHOPS EXTRAS</span></td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Especial Mariana Dias & Marcella Contursi:</strong> Como você pode construir uma imagem de autoridade e sucesso real dentro do Pilates, indo além da técnica — com posicionamento, consistência e verdade. Mariana e Marcella mostram os bastidores do seu Instagram.</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Especial Felipe Scher:</strong> A Precificação no Pilates - Como aumentar seu lucro e parar de perder dinheiro</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Especial Carolina Rorato:</strong> VOCÊ É A SUA MELHOR MARCA: liderança, presença e propósito no Pilates</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Especial Ana Lameu:</strong> Como ter um Studio de Rica</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Especial com Keyner Luiz:</strong> Criação de Renda Extra para Studios de Pilates</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SÁBADO -->
+                <div class="w-full mb-12">
+                    <div class="schedule-header">SÁBADO (23/05/2026)</div>
+                    <table class="schedule-table" role="table">
+                        <tbody role="rowgroup">
+                            <tr role="row"><td class="time-cell" role="cell">8h00 - 10h00</td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Biomecânica Aplicada ao Método Pilates</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Moves that Burn & Legs and Glutes.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Reformer Clássico - Nível Intermediário - Aquilo que nunca te contaram</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Renatha Cruz:</strong> Raciocínio Clínico e Ativação Muscular: Da Avaliação à Transformação</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Articulación Secuencial de la columna y estabilidad pelvica en Cadillac.</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">10h30 - 12h30</td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Como acrescentar o Mat Pilates suas aulas com aparelhos</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> MAT + OVERBALL: Como acrescentar a overball com estratégia nas suas aulas de MAT PILATES</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Mariana Dias:</strong> Como trazer consciência corporal no Reformer</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Vitoria Scapinello:</strong> Avaliação que converte</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Marlon Bluner:</strong> Cadillac - Conectando o Power House Através das molas</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell" style="padding: 4px; line-height: 1.2;">12h30 - 14h30</td><td class="session-cell text-center font-normal" style="text-align: center; padding: 4px;" role="cell">INTERVALO</td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">14h30 - 16h30</td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Marcilene Ferrer:</strong> O Poder dos Acessórios no atendimento à neurodivergente</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Nany Sevilla:</strong> Next Level Pilates. Movimentos avançados para aumento da massa muscular.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Reformer: como estruturar uma aula da Base ao Avançado com Clareza e Segurança</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> Biomecânica Aplicada ao Método Pilates</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Queila Florêncio:</strong> Construções Inteligentes no Cadillac</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">16h45 - 17h30<span style="display: block; margin-top: 5px; color: #BA1C1D; font-weight: 700; text-transform: uppercase; font-size: 10px; line-height: 1.2; white-space: normal;">MASTER CLASS GRATUITA PARA OS PRIMEIROS INSCRITOS</span></td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text">Master Class Prática Keyner Luiz</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text">Master Class Prática com Nany Sevilla MAT CORE ON FIRE</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text">Master Class Prática com Mariana Dias- Sequencia de box no Reformer</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text">Master Class Prática com Marlon Bluner - MAT Básico - Como fazer suas adaptações e evoluir o aluno</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text">Master Class Prática com Thalyssa Larangeiras Construindo sequências do básico ao avançado no Cadillac</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">20h00 - 00h00</td><td class="session-cell" style="background-color: #CD4446; color: white;" role="cell"><div class="flex flex-col md:flex-row items-center justify-center text-center gap-3"><div><span style="color: #FFC001; font-weight: 800; font-size: 16px;">FESTA A FANTASIA + BANDA + OPEN BAR:</span> <span style="color: #FFFFFF;">(ingresso adquirido a parte por R$149) - Limitado a apenas 300 convites - 100% do valor da Festa é revertido para você usar em Cursos Online VOLL.</span></div><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-table-buy" style="margin: 0;">COMPRAR AGORA</a></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- DOMINGO -->
+                <div class="w-full mb-12">
+                    <div class="schedule-header">DOMINGO (24/05/2026)</div>
+                    <table class="schedule-table" role="table">
+                        <tbody role="rowgroup">
+                            <tr role="row"><td class="time-cell" role="cell">9h00 - 11h00</td><td class="content-cell" role="cell"><div class="simultaneous-grid">
+                                <div class="event-item"><p class="event-text"><strong>Thalyssa Larangeiras:</strong> MAT 34 nos equipamentos</p><span class="room-tag">SALA TEATRO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Eliana Telleria:</strong> Mat Flow. Secuencias fluidas en Mat para fluir en los movimientos. Adicionar y entrelazar secuencias.</p><span class="room-tag">SALA MAT & ACESSÓRIOS</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Marcella Contursi:</strong> O poder do Reformer no ganho de flexibilidade para alcançar exercícios avançados</p><span class="room-tag">SALA REFORMER</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Tatiane Abreu:</strong> 6 Pilares da Conexão no Pilates</p><span class="room-tag">AUDITÓRIO</span></div>
+                                <div class="event-item"><p class="event-text"><strong>Juliana Renó:</strong> Como construir exercícios avançados no Cadillac e aplicar nas suas aulas</p><span class="room-tag">SALA CADILLAC</span></div>
+                            </div></td></tr>
+                            <tr role="row"><td class="time-cell" role="cell">11h30 - 12h00</td><td class="session-cell text-center font-bold" style="text-align: center;" role="cell">ENCERRAMENTO DA JORNADA</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center mt-12 mb-12"><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base">GARANTA JÁ A SUA VAGA</a></div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- BENEFÍCIOS: PADDING TOP 40px FIXO, BOTTOM 0 -->
+        <section class="w-full flex items-end pt-[40px] pb-0" style="background-color: #BF181C;">
+            <div class="max-w-[1280px] mx-auto w-full px-4 flex flex-col md:flex-row items-center md:items-end justify-between gap-12">
+                <div class="w-full md:w-3/5 text-left pb-16 md:pb-24 z-10">
+                    <h2 class="text-2xl md:text-[30px] font-normal mb-8" style="color: #2F0602;">Benefícios do seu ingresso:</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10 text-white text-sm md:text-base font-light">
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 5 Workshops para escolher;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na Jornada Business;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Entrada na abertura oficial;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Certificado de participação VOLL;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Acesso online ao material de todos os palestrantes;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Camiseta da Jornada;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 1 Workshop Extra;</div>
+                        <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Kit do congressista (sacochila, bloco e caneta).</div>
+                    </div>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <div class="payment-card"><span class="text-black font-bold text-base uppercase">Cartão de crédito</span><a href="https://jornadapilates.com.br/pagamento-cartao-credito/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
+                            <div class="payment-card"><span class="text-black font-bold text-base uppercase">Boleto Bancário</span><a href="https://jornadapilates.com.br/pagamento-boleto/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
+                        </div>
+                        <div class="bg-[#D59126] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full shadow-lg relative">
+                            <div class="text-center md:text-left"><span class="block text-white font-extrabold text-xl uppercase mb-1">MELHOR OFERTA!</span><span class="block text-[#2F0602] font-semibold text-sm">Desconto especial para pagamento à vista via PIX</span></div>
+                            <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 py-3 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;">
+                                CLIQUE AQUI
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center md:justify-end mt-0"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Foto-1.webp" alt="Participante" width="600" height="500" loading="lazy" class="w-full max-w-[400px] xl:max-w-[500px] h-auto object-contain block"></div>
+            </div>
+        </section>
+
+        <!-- HOTEL: PADDING Y 40px -->
+        <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
+            <div class="max-w-[1280px] mx-auto w-full flex flex-col md:flex-row items-start gap-12">
+                <div class="w-full md:w-1/2 text-left pl-4 md:pl-12">
+                    <h2 class="text-3xl md:text-[30px] font-normal mb-6"><span class="text-white">Hotel</span> <span class="text-[#CF3826] font-bold">Wish Serrano Resort</span></h2>
+                    <p class="text-white text-lg font-bold italic mb-6">Wish Serrano Resort: elegância, conforto e experiências inesquecíveis em Gramado!</p>
+                    <p class="text-white text-base font-light leading-relaxed mb-8 opacity-90">Localizado no coração de Gramado, o Wish Serrano foi eleito um dos Top5 melhores hotéis de Gramado e é um verdadeiro símbolo da hotelaria de alto padrão no Sul do Brasil. Em meio às paisagens encantadoras da Serra Gaúcha, o resort oferece uma experiência única de hospitalidade, reunindo sofisticação, aconchego e bem-estar para quem busca dias de descanso com charme e tranquilidade.</p>
+                    <p class="text-white text-sm font-light mb-4">Congressista tem desconto para se hospedar:</p>
+                    <a href="https://eventos.grupowish.com/vollpilates2026" target="_blank" class="btn-global-cta shadow-xl text-sm">FAÇA SUA HOSPEDAGEM</a>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Fotohotel.webp" class="w-full max-w-[450px] md:max-w-[500px] h-auto object-cover rounded-lg shadow-2xl" loading="lazy" alt="Hotel Wish Serrano" width="500" height="300"></div>
+            </div>
+        </section>
+
+        <!-- DÚVIDAS: PADDING Y 40px -->
+        <section class="w-full py-[40px] px-4" style="background-color: #3B0000;">
+            <div class="max-w-[1000px] mx-auto">
+                <h2 class="text-orange-custom text-3xl md:text-4xl font-normal mb-12 text-center">Dúvidas</h2>
+                <div class="space-y-4" id="accordion-container">
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">PRECISO FALAR COM UM CONSULTOR DA VOLL. COMO POSSO ENTRAR EM CONTATO?</span></button><div class="accordion-content text-white font-light text-base" style="display: block;"><p class="pt-2">Para entrar em contato com um consultor da VOLL, basta <a href="https://wa.me/5519993043657" target="_blank" class="text-[#FCB541] hover:underline font-bold">clicar aqui</a>.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">ATÉ QUANDO POSSO FAZER MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">O número de inscritos é limitado a 600 vagas. Na edição anterior, as vagas esgotaram-se em poucas semanas.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">O QUE ESTÁ INCLUSO PELO VALOR PAGO?</span></button><div class="accordion-content text-white font-light text-base"><ul class="list-disc list-inside space-y-1 ml-2 pt-2"><li>5 Workshops;</li><li>Entrada na palestra de abertura;</li><li>Acesso online ao material de todos os palestrantes;</li><li>Kit do congressista com sacochila, bloco e caneta;</li><li>Camiseta;</li><li>Certificado de participação VOLL;</li><li>1 entrada na Jornada Business;</li><li>1 workshop extra.</li></ul></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMO EU REALIZO O PAGAMENTO DA MINHA INSCRIÇÃO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode se inscrever diretamente nos botões do Menu Superior em <span class="text-[#FCB541] font-bold">AMARELO</span> do nosso site ou entrando em contato com uma de nossas consultoras pelo WhatsApp <a href="https://wa.me/5519993043657" class="text-[#FCB541] font-bold hover:underline">(19) 99304-3657</a>.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">TEM ESTACIONAMENTO NO LOCAL?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Sim, o hotel conta com estacionamento. Os valores podem variar de acordo com a época do ano.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">QUAL A FORMA DE PAGAMENTO?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Cartão de crédito, boleto ou Pix.</p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A FESTA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da festa por meio deste link: <br><a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/LUgYpgFonI3I3NXQT6eA</a></p></div></div>
+                    <div class="accordion-item border-b border-[#d95d38]/30 pb-4"><button class="accordion-header w-full text-left flex justify-between items-center py-2 focus:outline-none group"><span class="text-white text-lg font-bold italic uppercase pr-8">COMPREI O INGRESSO, MAS NÃO COMPREI A PRÉ-JORNADA. ONDE POSSO ADQUIRI-LA?</span></button><div class="accordion-content text-white font-light text-base"><p class="pt-2">Você pode adquirir o ingresso da pré-jornada por meio deste link: <br><a href="https://pay.hub.la/CTpCATfwPd1pRR00STRp" target="_blank" class="text-[#FCB541] hover:underline break-all">https://pay.hub.la/CTpCATfwPd1pRR00STRp</a></p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATROCINADORES: PADDING Y 40px -->
+        <section class="w-full py-[40px]" style="background-color: #F7F7F7;">
+            <div class="max-w-[1280px] mx-auto text-center px-4">
+                <h2 class="text-3xl md:text-4xl font-normal mb-10" style="color: #CF3928;">Patrocinadores</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
+                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
+                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" width="120" height="60" loading="lazy" class="h-auto w-auto max-w-[100px] md:max-w-[120px] max-h-[60px] object-contain">
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- FOOTER: PADDING Y 40px -->
     <footer class="w-full py-[40px] px-4 flex flex-col items-center text-center" style="background-color: #3B0000; border-top: 1px solid rgba(252, 185, 65, 0.2);">
-         <!-- LAZY LOADING -->
          <div class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="Logo X Jornada" width="250" height="120" loading="lazy" class="w-48 md:w-64 opacity-100"></div>
-         <!-- BOTÃO 6 - FOOTER: Usando btn-global-cta -->
          <a href="https://pay.hub.la/LUgYpgFonI3I3NXQT6eA" target="_blank" class="btn-global-cta shadow-xl text-base mb-6">COMPRE AQUI O SEU INGRESSO</a>
          <p class="text-white/80 text-xs font-light max-w-2xl">*ao fazer sua inscrição você está de acordo com a política de vendas da empresa</p>
     </footer>
@@ -673,7 +665,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT: MENU MOBILE -->
+    <!-- SCRIPTS -->
     <script>
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -687,12 +679,7 @@
                 });
             });
         }
-    </script>
 
-    <!-- SCRIPT PRINCIPAL -->
-    <script>
-        // OTIMIZAÇÃO: Removida a chamada ao lucide.createIcons() pois agora usamos SVG inline
-        
         function playVideo() { 
             const wrapper = document.getElementById('videoWrapper');
             const iframeContainer = document.getElementById('iframeContainer');
