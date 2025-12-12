@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS, uma das mais belas cidades do Brasil.">
     <title>Jornada Sul-Americana de Pilates</title>
     
+    <!-- SOCIAL SHARE / OPEN GRAPH (Adicionado conforme pedido) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jornada Sul-Americana de Pilates">
+    <meta property="og:description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS.">
+    <meta property="og:image" content="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1-300x181.webp">
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jornada Sul-Americana de Pilates">
+    <meta name="twitter:description" content="Garanta a sua vaga para a X Jornada Sul-Americana de Pilates, que acontecerá em Gramado - RS.">
+    <meta name="twitter:image" content="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo-1-300x181.webp">
+
     <!-- OTIMIZAÇÃO: Preload da imagem principal -->
     <link rel="preload" as="image" href="https://jornadapilates.com.br/wp-content/uploads/2025/11/bgnovo.webp">
-    <!-- OTIMIZAÇÃO: Preconnect para o domínio das imagens -->
+    
+    <!-- OTIMIZAÇÃO: Preconnect para acelerar conexões externas (Resolve parte do bloqueio) -->
     <link rel="preconnect" href="https://jornadapilates.com.br">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- OTIMIZAÇÃO: Removido script Lucide para melhorar performance. Ícones agora são SVG inline. -->
+            <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KB88R67');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1281354505336770');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1281354505336770&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
     <style>
         body {
@@ -175,7 +216,14 @@
         .carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: visible; }
         .carousel-viewport { overflow: hidden; width: 100%; touch-action: pan-y; cursor: grab; }
         .carousel-viewport:active { cursor: grabbing; }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        /* OTIMIZAÇÃO: will-change para performance e translate3d para forçar GPU */
+        .carousel-track { 
+            display: flex; 
+            transition: transform 0.5s ease-in-out; 
+            width: 100%; 
+            will-change: transform;
+            transform: translate3d(0, 0, 0); /* Aceleração de Hardware */
+        }
         .carousel-slide { min-width: 100%; flex: 0 0 100%; box-sizing: border-box; padding: 20px; display: flex; justify-content: center; user-select: none; }
         
         .nav-button {
@@ -345,18 +393,36 @@
         }
         .mobile-menu-wrapper.open { grid-template-rows: 1fr; border-top: 1px solid rgba(255,255,255,0.1); }
         .mobile-menu-inner { overflow: hidden; min-height: 0; }
+
+        @keyframes pular {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    }
+
+    #whatsapp-blipchat {
+    animation: pular 1.5s infinite;
+    display: inline-block;
+    position: relative;
+}
     </style>
 </head>
 <body>
+
+        <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB88R67"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- MENU -->
     <nav class="bg-menu-bar w-full fixed top-0 left-0 z-50 shadow-lg h-14 lg:h-12 flex items-center">
         <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 h-full">
             <div class="flex items-center justify-between lg:justify-center w-full h-full">
                 <div class="lg:hidden w-full flex justify-end items-center">
-                    <!-- ACESSIBILIDADE: aria-expanded e aria-controls -->
                     <button id="mobile-menu-btn" aria-label="Abrir menu principal" aria-expanded="false" aria-controls="mobile-menu" class="text-white p-2 focus:outline-none hover:text-[#FCB541] transition-colors">
-                        <!-- ÍCONE SVG INLINE: Menu -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                     </button>
                 </div>
@@ -384,7 +450,7 @@
                     <a href="https://jornadapilates.com.br/pre-jornada2026/" target="_blank" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Pré-Jornada</a>
                     <a href="#palestrantes" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Palestrantes</a>
                     <a href="#programacao" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Programação</a>
-                    <a href="#local " class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Local</a>
+                    <a href="#local" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Local</a>
                     <a href="#duvidas" class="text-white text-sm font-bold uppercase hover:text-[#FCB541] transition-colors">Dúvidas</a>
                     <a href="#preco" class="bg-ticket-btn inline-block mt-4 w-full py-2">Compre seu Ingresso</a>
                 </div>
@@ -398,8 +464,8 @@
         <div role="region" aria-label="Home" id="home" class="bg-hero-image w-full">
             <header class="flex flex-col items-center justify-center pt-32 pb-12 px-4">
                 <div class="flex flex-col items-center text-center max-w-[1280px] w-full"> 
-                    <!-- SEMÂNTICA: H1 + OTIMIZAÇÃO DE CLS -->
-                    <h1 class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates" width="340" height="150" class="max-w-[340px] h-auto object-contain mx-auto"></h1>
+                    <!-- SEMÂNTICA: H1 + OTIMIZAÇÃO: fetchpriority=high no LCP -->
+                    <h1 class="mb-8"><img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Logo.webp" alt="X Jornada Sul-Americana de Pilates" width="340" height="150" fetchpriority="high" class="max-w-[340px] h-auto object-contain mx-auto"></h1>
                     
                     <div class="mb-2"><p class="text-[#CE3725] text-[30px] tracking-wider uppercase">22 A 24 DE MAIO DE 2026</p></div>
                     <div class="mb-10"><p class="text-white text-[30px] font-medium tracking-wide uppercase">GRAMADO – RS</p></div>
@@ -429,7 +495,7 @@
                 
                 <div class="w-full mb-12">
                     <h2 class="text-white text-2xl md:text-[30px] font-light mb-12">Palestrantes confirmados na <span class="text-[#CA3624] font-bold">Edição 2026:</span></h2>
-                    <div  class="carousel-wrapper">
+                    <div class="carousel-wrapper">
                         <!-- ACESSIBILIDADE: aria-label + SVG INLINE -->
                         <button class="nav-button nav-prev" id="prevBtn_speakers" aria-label="Palestrante anterior">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m15 18-6-6 6-6"/></svg>
@@ -604,14 +670,30 @@
                         <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> 1 Workshop Extra;</div>
                         <div class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-[#FCB541] flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg> Kit do congressista (sacochila, bloco e caneta).</div>
                     </div>
+                    <!-- LINKS COM ARIA-LABEL PARA ACESSIBILIDADE -->
                     <div class="flex flex-col gap-8">
                         <div class="flex flex-col sm:flex-row gap-6">
-                            <div class="payment-card"><span class="text-black font-bold text-base uppercase">Cartão de crédito</span><a href="https://jornadapilates.com.br/pagamento-cartao-credito/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
-                            <div class="payment-card"><span class="text-black font-bold text-base uppercase">Boleto Bancário</span><a href="https://jornadapilates.com.br/pagamento-boleto/" target="_blank" class="payment-btn-float">CLIQUE AQUI</a></div>
+                            <!-- ADDED SR-ONLY TEXT -->
+                            <div class="payment-card">
+                                <span class="text-black font-bold text-base uppercase">Cartão de crédito</span>
+                                <a href="https://jornadapilates.com.br/pagamento-cartao-credito/" target="_blank" class="payment-btn-float" aria-label="Pagar inscrição na Jornada Pilates com Cartão de Crédito">
+                                    CLIQUE AQUI <span class="sr-only">para pagar com cartão de crédito</span>
+                                </a>
+                            </div>
+                             <!-- ADDED SR-ONLY TEXT -->
+                            <div class="payment-card">
+                                <span class="text-black font-bold text-base uppercase">Boleto Bancário</span>
+                                <a href="https://jornadapilates.com.br/pagamento-boleto/" target="_blank" class="payment-btn-float" aria-label="Gerar Boleto Bancário para inscrição na Jornada Pilates">
+                                    CLIQUE AQUI <span class="sr-only">para gerar boleto bancário</span>
+                                </a>
+                            </div>
                         </div>
                         <div class="bg-[#D59126] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full shadow-lg relative">
                             <div class="text-center md:text-left"><span class="block text-white font-extrabold text-xl uppercase mb-1">MELHOR OFERTA!</span><span class="block text-[#2F0602] font-semibold text-sm">Desconto especial para pagamento à vista via PIX</span></div>
-                            <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;">CLIQUE AQUI</a>
+                             <!-- ADDED SR-ONLY TEXT -->
+                            <a href="https://jornadapilates.com.br/pagamento-a-vista/" target="_blank" class="bg-[#2F0602] text-white font-bold uppercase px-8 py-3 rounded-full hover:bg-black transition-transform transform hover:scale-105 flex items-center justify-center text-sm whitespace-nowrap shadow-lg border-none" style="height: auto; min-height: 48px;" aria-label="Pagar inscrição à vista via PIX com desconto especial">
+                                CLIQUE AQUI <span class="sr-only">para pagar via PIX com desconto</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -657,7 +739,7 @@
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
                      <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Equipilates.webp" alt="Logo Equipilates" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
                      <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Seufrisio.webp" alt="Logo Seufisio" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[140px] md:max-w-[180px] max-h-[50px] object-contain">
-                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" width="120" height="60" loading="lazy" class="h-auto w-auto max-w-[100px] md:max-w-[120px] max-h-[60px] object-contain">
+                     <img src="https://jornadapilates.com.br/wp-content/uploads/2025/11/Gramado.webp" alt="Logo Gramado Premium" width="180" height="50" loading="lazy" class="h-auto w-auto max-w-[180px] md:max-w-[180px] max-h-[60px] object-contain">
                 </div>
             </div>
         </section>
@@ -677,6 +759,11 @@
             <!-- Botão de fechar será inserido via JS -->
         </div>
     </div>
+
+    <!-- CHAT BLIP WHATSAPP -->
+    <a id="whatsapp-blipchat" style="position: fixed; bottom: 60px; right: 10px; z-index: 9999;" aria-label="Fale no WhatsApp" href="https://wa.me/5519989767030?text=Ol%C3%A1.%20Quero%20informa%C3%A7%C3%B5es%20sobre%20a%20Jornada%20Sul-Americana%20de%20Pilates%202026" target="_new">
+        <img src="https://encontropilates.com.br/lancamento2026/wp-content/uploads/2025/09/whatsapp-icon.png" width="75" height="75" alt="Fale no WhatsApp">
+    </a>
 
     <!-- SCRIPT: MENU MOBILE -->
     <script>
@@ -763,18 +850,12 @@
             const dotsContainer = document.getElementById(dotsId);
             const prevBtn = document.getElementById(prevBtnId);
             const nextBtn = document.getElementById(nextBtnId);
-            const wrapper = track.parentElement.parentElement; 
-            
             let currentIndex = 0;
-            let autoPlayInterval;
-
             if(data.length === 0) return;
-            
             data.forEach((item, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 if(type==='speaker') {
-                    // SVG INLINE PARA SETAS DO MOBILE
                     slide.innerHTML = `<div class="flex flex-col md:flex-row gap-8 items-center w-full px-14 md:px-0"><img src="${item.image}" alt="${item.name}" width="224" height="224" loading="lazy" class="w-56 h-auto md:w-1/3 md:h-auto object-cover" style="border: 5px solid white; border-radius: 10px; pointer-events: none;"><div class="w-full md:w-2/3 text-center md:text-left"><h3 class="text-speaker-name font-bold text-[20px] uppercase leading-tight md:text-[30px]">${item.name}</h3><p class="text-white text-sm mt-4 leading-relaxed hidden md:block md:text-[18px]">${item.text}</p><button class="btn-hero shadow-xl mt-4 text-xs px-4 md:hidden" onclick="openSpeakerModal(${index})">SAIBA MAIS</button></div></div>`;
                 } else if (type === 'news') {
                     slide.innerHTML = `<div class="news-card-container"><div class="news-text-box"><h3 class="text-[#CF3826] font-bold text-xl uppercase">${item.title}</h3><p class="text-gray-800 mt-4">${item.description}</p>${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero shadow-xl mt-6 text-xs px-4">COMPRAR AGORA</a>` : ''}</div><div class="news-image-wrapper"><img src="${item.image}" alt="${item.title}" width="500" height="350" loading="lazy" style="pointer-events: none;"></div></div>`; 
@@ -788,52 +869,21 @@
                 });
                 dotsContainer.appendChild(dot);
             });
-
             const dots = dotsContainer.querySelectorAll('.dot');
-            
             function updateCarousel() {
                 if (type === 'news' && window.innerWidth < 1024) { track.style.transform = 'none'; return; }
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 dots.forEach((dot, index) => { if(index === currentIndex) dot.classList.add('active'); else dot.classList.remove('active'); });
             }
-
             function goToSlide(index) {
                 if (index < 0) currentIndex = data.length - 1;
                 else if (index >= data.length) currentIndex = 0;
                 else currentIndex = index;
                 updateCarousel();
             }
-
-            function startAutoPlay() {
-                if (type === 'news' && window.innerWidth < 1024) return;
-                stopAutoPlay();
-                autoPlayInterval = setInterval(() => {
-                    goToSlide(currentIndex + 1);
-                }, 10000);
-            }
-
-            function stopAutoPlay() {
-                clearInterval(autoPlayInterval);
-            }
-
-            wrapper.addEventListener('mouseenter', stopAutoPlay);
-            wrapper.addEventListener('mouseleave', startAutoPlay);
-            wrapper.addEventListener('touchstart', stopAutoPlay);
-            wrapper.addEventListener('touchend', startAutoPlay);
-
-            startAutoPlay();
-
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-            nextBtn.addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-            
-            window.addEventListener('resize', () => {
-                updateCarousel();
-                startAutoPlay();
-            });
+            prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+            window.addEventListener('resize', updateCarousel);
             
             let startX = 0;
             let isDragging = false;
@@ -843,11 +893,11 @@
                 if (isNewsMobile()) return;
                 startX = e.touches[0].clientX;
                 isDragging = true;
-                stopAutoPlay();
             });
 
             track.addEventListener('touchmove', (e) => {
                 if (!isDragging || isNewsMobile()) return;
+                // Optional: Visual feedback during drag could go here
             });
 
             track.addEventListener('touchend', (e) => {
@@ -855,12 +905,11 @@
                 const endX = e.changedTouches[0].clientX;
                 const diff = startX - endX;
                 
-                if (Math.abs(diff) > 50) { 
-                    if (diff > 0) goToSlide(currentIndex + 1); 
-                    else goToSlide(currentIndex - 1); 
+                if (Math.abs(diff) > 50) { // Threshold de 50px
+                    if (diff > 0) goToSlide(currentIndex + 1); // Swipe Left -> Next
+                    else goToSlide(currentIndex - 1); // Swipe Right -> Prev
                 }
                 isDragging = false;
-                startAutoPlay();
             });
         }
 
@@ -874,24 +923,15 @@
         if(secondItem) { secondItem.classList.add('open'); secondItem.style.maxHeight = secondItem.scrollHeight + "px"; }
 
         document.querySelectorAll('.accordion-header').forEach(button => {
-            button.setAttribute('aria-expanded', 'false');
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;
                 const isOpen = content.classList.contains('open');
-                
-                document.querySelectorAll('.accordion-content').forEach(c => { 
-                    c.style.maxHeight = null; 
-                    c.classList.remove('open'); 
-                    c.previousElementSibling.setAttribute('aria-expanded', 'false');
-                });
-                
-                if (!isOpen) { 
-                    content.classList.add('open'); 
-                    content.style.maxHeight = content.scrollHeight + "px"; 
-                    button.setAttribute('aria-expanded', 'true');
-                }
+                document.querySelectorAll('.accordion-content').forEach(c => { c.style.maxHeight = null; c.classList.remove('open'); });
+                if (!isOpen) { content.classList.add('open'); content.style.maxHeight = content.scrollHeight + "px"; }
             });
         });
     </script>
+
+    
 </body>
 </html>
